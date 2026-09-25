@@ -1,0 +1,7 @@
+# Copie para `.dev.vars` (ignorado pelo Git) para usar a IA no ambiente local.
+# Em produção use: npx wrangler secret put ANTHROPIC_API_KEY
+ANTHROPIC_API_KEY=
+# Opcional: modelo Claude usado pelo app (padrão: claude-opus-5)
+# ANTHROPIC_MODEL=claude-opus-5
+# Opcional: URL do Cloudflare AI Gateway (ex.: https://gateway.ai.cloudflare.com/v1/<conta>/<gateway>/anthropic)
+# ANTHROPIC_BASE_URL=

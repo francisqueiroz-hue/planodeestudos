@@ -1,0 +1,23 @@
+import type {SubjectBank} from './types.ts';
+
+export const arte:SubjectBank={subject:'Arte',items:[
+ ['Elementos da linguagem visual',1,'Qual é considerado o elemento mais simples da linguagem visual?',['o ponto','a textura','o volume','a perspectiva'],0,'O ponto é a unidade mínima. Pontos em sequência formam linhas, e linhas fechadas formam formas.'],
+ ['Elementos da linguagem visual',2,'No modelo tradicional de cores de pigmento, quais são as cores primárias?',['vermelho, amarelo e azul','verde, laranja e roxo','preto, branco e cinza','rosa, marrom e bege'],0,'Misturando as primárias duas a duas, obtêm-se as secundárias: laranja, verde e roxo.'],
+ ['Elementos da linguagem visual',2,'No círculo cromático tradicional, qual é a cor complementar do azul?',['laranja','verde','roxo','azul-claro'],0,'Complementares ficam em posições opostas no círculo e criam forte contraste: azul–laranja, vermelho–verde, amarelo–roxo.'],
+ ['Elementos da linguagem visual',2,'Em artes visuais, a textura é:',['a qualidade da superfície, que pode ser tátil ou apenas visual','o tamanho da obra','o nome do artista','a moldura do quadro'],0,'A textura pode ser sentida pelo toque ou sugerida no desenho e na pintura.'],
+
+ ['Música e cultura brasileira',1,'Qual gênero musical de forte raiz afro-brasileira é reconhecido como patrimônio cultural do Brasil?',['samba','valsa','tango','flamenco'],0,'O samba, com as matrizes do samba do Rio de Janeiro e o samba de roda do Recôncavo Baiano, é patrimônio imaterial brasileiro.'],
+ ['Música e cultura brasileira',2,'Quais instrumentos formam o trio tradicional do forró pé de serra?',['sanfona, zabumba e triângulo','violino, piano e harpa','guitarra, baixo e bateria','flauta doce e xilofone'],0,'Essa formação foi popularizada por Luiz Gonzaga, o “Rei do Baião”.'],
+ ['Música e cultura brasileira',2,'Qual compositor brasileiro uniu a música erudita a temas populares, como nas “Bachianas Brasileiras”?',['Heitor Villa-Lobos','Ludwig van Beethoven','Wolfgang Amadeus Mozart','Antonio Vivaldi'],0,'Villa-Lobos pesquisou ritmos e melodias do Brasil e os levou para a música de concerto.'],
+ ['Música e cultura brasileira',2,'Entre as propriedades do som, o timbre é:',['a característica que diferencia a “cor” do som de cada instrumento ou voz','o volume do som','a velocidade da música','a duração da nota'],0,'É pelo timbre que distinguimos um violão de um piano tocando a mesma nota. O volume é a intensidade.'],
+
+ ['Teatro e expressão',1,'Em um texto teatral, o que é a rubrica?',['a indicação do autor sobre cenário, gestos ou modo de falar','a fala de um personagem','o nome do teatro','o ingresso do espetáculo'],0,'As rubricas orientam atores e diretores e geralmente aparecem entre parênteses ou em itálico.'],
+ ['Teatro e expressão',2,'O que é um monólogo?',['uma cena ou peça em que um único ator fala','um diálogo entre dois atores','uma peça sem falas','um coral'],0,'No monólogo, o personagem expressa pensamentos e sentimentos sem um interlocutor em cena.'],
+ ['Teatro e expressão',2,'No teatro, a improvisação é:',['a criação de cenas sem um roteiro fixo decorado','a memorização de um texto completo','a escolha do figurino','a iluminação do palco'],0,'Jogos de improvisação desenvolvem criatividade, escuta e trabalho em grupo.'],
+ ['Teatro e expressão',2,'Em que país surgiu a commedia dell’arte, com personagens-tipo e máscaras, como Arlequim?',['Itália','Brasil','Japão','Egito'],0,'Ela surgiu no século XVI e influenciou a comédia popular no mundo todo.'],
+
+ ['Dança e identidade cultural',1,'O frevo, dança acrobática com sombrinhas coloridas, é típico de qual estado?',['Pernambuco','Rio Grande do Sul','Amazonas','Paraná'],0,'O frevo é símbolo do carnaval de Recife e Olinda e é patrimônio cultural imaterial.'],
+ ['Dança e identidade cultural',2,'Em qual estado acontece o Festival de Parintins, com os bois Garantido e Caprichoso?',['Amazonas','Bahia','Santa Catarina','Goiás'],0,'O festival apresenta o boi-bumbá com música, dança e alegorias que valorizam culturas amazônicas.'],
+ ['Dança e identidade cultural',2,'Na dança, os “níveis” alto, médio e baixo se referem:',['à altura do corpo em relação ao chão','ao volume da música','à quantidade de dançarinos','ao figurino'],0,'Explorar níveis (em pé, agachado, no chão) amplia as possibilidades de movimento no espaço.'],
+ ['Dança e identidade cultural',2,'O que é a capoeira?',['uma expressão cultural afro-brasileira que une luta, dança e música','uma dança de salão europeia','um tipo de balé clássico','um esporte de origem asiática'],0,'A roda de capoeira é reconhecida pela UNESCO como patrimônio cultural imaterial da humanidade.'],
+]};
