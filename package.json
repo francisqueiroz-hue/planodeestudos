@@ -15,7 +15,8 @@
     "test": "node --test --experimental-strip-types tests/*.test.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate:local": "wrangler d1 migrations apply DB --local --persist-to .wrangler/state",
-    "db:migrate:remote": "wrangler d1 migrations apply DB --remote"
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "docs:plano": "node --experimental-strip-types scripts/gerar-plano.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",

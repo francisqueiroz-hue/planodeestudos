@@ -1,6 +1,6 @@
 'use client';
 import {useCallback,useEffect,useState} from 'react';
-import {type ChatMessage,type Question,type RecordList,type Result,type StudySession,errorOf,json,readJSON} from './shared';
+import {type ChatMessage,type Question,type RecordList,type Result,type StudySession,errorOf,json,optionsOf,readJSON} from './shared';
 
 const empty:RecordList={materials:[],plans:[],topics:[],questions:[],attempts:[],resources:[]};
 
@@ -44,11 +44,15 @@ export function useStudy(onExpired:()=>void){
   }catch(e){setError(errorOf(e,'Falha no envio'));return null}finally{setBusy(false)}
  },[load,onExpired]);
 
- // Corrige com IA quando disponível; sem IA, usa a comparação literal do servidor.
+ // Múltipla escolha é corrigida pelo gabarito; questões abertas usam a IA quando disponível
+ // e, sem IA, a comparação literal do servidor.
  const grade=useCallback(async(q:Question,response:string):Promise<Result|null>=>{
-  const text=response.trim();if(!text){setError('Escreva ou fale sua resposta.');return null}
-  const x=await post(ready?'/api/ai':'/api/study',{op:ready?'grade':'attempt',questionId:q.id,response:text});
-  return x?{verdict:(x.verdict as Result['verdict'])||'review',feedback:String(x.feedback||'')}:null;
+  const text=response.trim();if(!text){setError('Escolha, escreva ou fale sua resposta.');return null}
+  const useAI=ready&&!optionsOf(q);
+  const x=await post(useAI?'/api/ai':'/api/study',{op:useAI?'grade':'attempt',questionId:q.id,response:text});
+  if(!x)return null;
+  if(optionsOf(q))return {verdict:x.verdict==='correct'?'correct':'incorrect',feedback:x.verdict==='correct'?'Você escolheu a alternativa correta.':'Não é essa. Veja a explicação abaixo.'};
+  return {verdict:(x.verdict as Result['verdict'])||'review',feedback:String(x.feedback||'')};
  },[post,ready]);
 
  return {data,setData,loaded,busy,error,setError,message,setMessage,ready,chat,sessions,load,post,upload,grade};

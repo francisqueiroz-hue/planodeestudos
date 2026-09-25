@@ -6,7 +6,7 @@ export type User={id:string;email:string;name:string};
 export type Material={id:string;title:string;kind:string;content:string;objectKey:string|null;createdAt:number};
 export type Plan={id:string;title:string;examDate:string|null;target:string|null};
 export type Topic={id:string;planId:string;title:string;status:string;position:number;week:number};
-export type Question={id:string;prompt:string;answer:string;topicLabel:string|null;subject:string|null;explanation:string|null;source:string|null};
+export type Question={id:string;prompt:string;answer:string;topicLabel:string|null;subject:string|null;explanation:string|null;source:string|null;options:string|null;difficulty:number|null};
 export type Attempt={id:string;questionId:string;correct:boolean;createdAt:number};
 export type Resource={id:string;subject:string;topic:string;title:string;provider:string;kind:string;url:string};
 export type ChatMessage={id:string;role:string;content:string};
@@ -21,6 +21,30 @@ export function errorOf(e:unknown,fallback:string){return e instanceof Error&&e.
 // Associa rótulos curtos do banco inicial aos temas da trilha (para achar vídeos relacionados).
 const topicAliases:Record<string,string>={'Potenciação':'Potenciação e radiciação','Porcentagens':'Porcentagens e juros simples','Equações':'Equações do 1º grau e sistemas','Geometria':'Geometria: ângulos, polígonos e congruência','Lua':'Sistema Sol, Terra e Lua','Energia':'Fontes e transformação de energia'};
 export function topicFor(q:Question){const label=q.topicLabel||'';return topicAliases[label]||label}
+
+// Alternativas de questões de múltipla escolha (guardadas como JSON); null para questões abertas.
+export function optionsOf(q:Question):string[]|null{
+ if(!q.options)return null;
+ try{const o=JSON.parse(q.options);return Array.isArray(o)&&o.length>=2&&o.every(x=>typeof x==='string')?o:null}catch{return null}
+}
+export const LETTERS=['A','B','C','D','E'];
+export const LEVELS:Record<number,string>={1:'Fácil',2:'Média',3:'Desafio'};
+
+// Interpreta a resposta falada: “letra B”, “alternativa c”, “bê” ou o texto da alternativa.
+const spokenLetters:Record<string,number>={a:0,'á':0,b:1,'bê':1,be:1,c:2,'cê':2,ce:2,se:2,d:3,'dê':3,de:3,e:4,'é':4};
+export function matchSpokenOption(said:string,options:string[]):number|null{
+ const norm=(x:string)=>x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+ const raw=said.toLowerCase().trim();
+ const m=raw.match(/(?:letra|alternativa|op[cç][aã]o)\s+([a-e]|[áé]|b[eê]|c[eê]|d[eê])\b/)||raw.match(/^([a-e]|b[eê]|c[eê]|d[eê]|se)[.!]?$/);
+ if(m){const i=spokenLetters[m[1]];if(i!==undefined&&i<options.length)return i}
+ const s=norm(said);if(!s)return null;
+ const exact=options.findIndex(o=>norm(o)===s);if(exact>=0)return exact;
+ const partial=options.map((o,i)=>({i,o:norm(o)})).filter(x=>x.o.length>2&&(s.includes(x.o)||x.o.includes(s)));
+ return partial.length===1?partial[0].i:null;
+}
+
+// Videoaulas ligadas ao tema da questão (mesma disciplina e tema do plano).
+export function videosFor(resources:Resource[],subject:string|null,topic:string){return resources.filter(r=>r.kind!=='repository'&&r.topic===topic&&(!subject||r.subject===subject))}
 
 export function shuffle<T>(items:T[]):T[]{const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 

@@ -272,3 +272,29 @@ button.mode-tile:hover{transform:translateY(-3px);color:var(--text);background:v
 
 .footer{text-align:center;color:var(--faint);padding:50px 20px;font-size:14px}
 .footer a{text-decoration:underline}
+
+/* ---------- Múltipla escolha, plano e acervos ---------- */
+.options{display:grid;gap:8px;width:100%;text-align:left}
+.option{display:flex;align-items:flex-start;gap:12px;width:100%;padding:12px 14px;border-radius:16px;border:1px solid var(--line-2);background:#0f0f13;color:var(--text);text-align:left;line-height:1.45;transition:border-color .15s,background .15s}
+.option:hover:not(:disabled){border-color:rgba(154,140,255,.5)}
+.option.on{border-color:var(--accent-2);background:rgba(154,140,255,.12)}
+.option.right{border-color:var(--ok);background:rgba(126,226,168,.12)}
+.option.wrong{border-color:var(--bad);background:rgba(255,143,155,.1)}
+.option:disabled{opacity:1;cursor:default}
+.letter{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--tile-hi);font-family:var(--mono);font-size:13px;flex-shrink:0}
+.option.on .letter{background:var(--accent-2);color:#0a0a0d}
+.option.right .letter{background:var(--ok);color:#0a0a0d}
+.option.wrong .letter{background:var(--bad);color:#0a0a0d}
+.source{color:var(--faint);font-size:12px}
+.topic-info{padding-left:27px;font-size:14px;color:var(--dim)}
+.topic-info summary{cursor:pointer;color:var(--accent-2);font-size:13px}
+.topic-info p{margin:6px 0 4px;color:#c9c9d3;line-height:1.5}
+.topic-info ul{margin:0;padding-left:18px;line-height:1.6}
+.topic-actions{flex-wrap:wrap;row-gap:4px}
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;width:100%;text-align:left}
+.repo{display:grid;gap:6px;padding:16px;border-radius:18px;background:var(--tile);border:1px solid var(--line);transition:border-color .15s}
+.repo:hover{border-color:rgba(154,140,255,.5)}
+.topic-actions{flex-direction:column;align-items:flex-start;gap:6px}
+.topic-actions .link{align-items:flex-start;text-align:left;padding:0}
+.topic-actions .link svg{margin-top:3px}
+.topic-info ul{list-style:disc}

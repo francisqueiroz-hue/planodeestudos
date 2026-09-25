@@ -2,7 +2,8 @@
 import {useRef,useState} from 'react';
 import {CalendarDays,ChevronRight,Play,Trash2,Wand} from 'lucide-react';
 import {curriculum} from '../../lib/curriculum';
-import {Spark,type Topic} from './shared';
+import {Spark,topicFor,videosFor,type Topic} from './shared';
+import {bimester,findPlan} from '../../lib/study-plan.ts';
 import type {Study} from './useStudy';
 import type {Go} from './Dashboard';
 
@@ -32,7 +33,7 @@ export function PlanSection({study,go}:{study:Study;go:Go}){
    <section className="card">
     <h2 className="display"><span className="dim">Comece rápido</span> com uma trilha guiada.</h2>
     <Spark/>
-    <p className="note">Temas do 8º ano em sequência, dois por semana, com aulas e questões para cada um.</p>
+    <p className="note">Plano anual do 8º ano: os temas são distribuídos pelos 4 bimestres, cada um com objetivo, videoaulas e questões com gabarito.</p>
     <div className="chips" role="radiogroup" aria-label="Disciplina da trilha">{subjects.map(s=><button key={s} role="radio" aria-checked={subject===s} className={'chip '+(subject===s?'on':'')} onClick={()=>setSubject(s)}>{s}</button>)}</div>
     <button className="btn" disabled={busy} onClick={async()=>{const x=await post('/api/study',{op:'path',subject});if(x)setMessage(String(x.notice||`Trilha de ${subject} criada com ${x.count} temas.`))}}><Wand size={16}/> Criar trilha de {subject}</button>
    </section>
@@ -67,14 +68,18 @@ export function PlanSection({study,go}:{study:Study;go:Go}){
      <div className="ring" style={{['--p' as string]:list.length?done/list.length:0}} aria-label={`${done} de ${list.length} temas concluídos`}><span>{done}/{list.length}</span></div>
     </div>
     <div className="weeks">{weeks.map(w=><div className="week" key={w}>
-     <h3>Semana {w}</h3>
-     {list.filter(t=>(t.week||1)===w).map(t=>{const vids=data.resources.filter(r=>r.topic===t.title&&r.kind!=='repository').slice(0,2);return <div className={'topic '+(t.status==='done'?'done':'')} key={t.id}>
-      <label><input type="checkbox" checked={t.status==='done'} onChange={()=>toggle(t)}/><span>{t.title}</span></label>
-      <div className="topic-actions">
-       {vids.map((r,i)=><a key={r.id} className="link" href={r.url} target="_blank" rel="noopener noreferrer" title={`${r.title} · ${r.provider}`}><Play size={13}/> Aula{vids.length>1?` ${i+1}`:''}</a>)}
-       <button className="link" onClick={()=>go('praticar',{topic:t.title})}>Praticar <ChevronRight size={13}/></button>
-      </div>
-     </div>})}
+     <h3>Semana {w} · {bimester(w)}º bimestre</h3>
+     {list.filter(t=>(t.week||1)===w).map(t=>{
+      const info=findPlan(t.title),vids=videosFor(data.resources,info?.subject??null,t.title).slice(0,2);
+      const count=data.questions.filter(q=>topicFor(q)===t.title).length;
+      return <div className={'topic '+(t.status==='done'?'done':'')} key={t.id}>
+       <label><input type="checkbox" checked={t.status==='done'} onChange={()=>toggle(t)}/><span>{t.title}</span></label>
+       {info&&<details className="topic-info"><summary>Objetivo e conceitos</summary><p>{info.objective}</p><ul>{info.concepts.map(c=><li key={c}>{c}</li>)}</ul></details>}
+       <div className="topic-actions">
+        {vids.map(r=><a key={r.id} className="link" href={r.url} target="_blank" rel="noopener noreferrer" title={r.provider}><Play size={13}/> {r.title}</a>)}
+        <button className="link" onClick={()=>go('praticar',{topic:t.title})}>Praticar {count?`${count} questões`:''} <ChevronRight size={13}/></button>
+       </div>
+      </div>})}
     </div>)}</div>
     <button className="danger" onClick={async()=>{if(confirm(`Excluir o plano “${p.title}”?`))await post('/api/study',{op:'delete',table:'plan',id:p.id})}}><Trash2 size={14}/> Excluir plano</button>
    </section>;

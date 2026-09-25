@@ -5,7 +5,8 @@ import {eq,and,desc,inArray} from 'drizzle-orm';
 import {resources} from '../../../lib/resources';
 import {curriculum} from '../../../lib/curriculum';
 import {currentUserId} from '../../../lib/auth';
-import {chunks,ensureCatalog,seedQuestions} from '../../../lib/bootstrap';
+import {catalogOutdated,chunks,ensureCatalog,seedQuestions} from '../../../lib/bootstrap';
+import {schoolWeek} from '../../../lib/study-plan.ts';
 import {normalizeAnswer} from '../../../lib/password';
 import {weekFor} from '../../../lib/planning';
 
@@ -22,6 +23,7 @@ export async function GET(r:Request){
    db.select().from(attempts).where(eq(attempts.owner,owner)).orderBy(desc(attempts.createdAt)),
   ]);
   const t=(await Promise.all(chunks(p.map(v=>v.id),90).map(ids=>db.select().from(topics).where(inArray(topics.planId,ids))))).flat().sort((x,y)=>x.position-y.position);
+  if(await catalogOutdated())await ensureCatalog();
   const links=await db.select().from(resourceCatalog);
   return Response.json({materials:m,plans:p,topics:t,questions:q,attempts:a,resources:links.length?links:resources});
  }catch(e){console.error('study GET',e);return fail('Os dados estão temporariamente indisponíveis.',503)}
@@ -50,9 +52,8 @@ export async function POST(r:Request){
    const title=`Trilha de ${subject} · 8º ano`;
    const previous=await db.select().from(plans).where(and(eq(plans.owner,owner),eq(plans.title,title))).limit(1);
    if(previous.length)return Response.json({planId:previous[0].id,count:list.length,notice:'Esta trilha já existe no seu plano.'});
-   await ensureCatalog();
-   await db.insert(plans).values({id,owner,title,examDate:null,target:'Revisar, praticar e corrigir',createdAt:now});
-   const rows=list.map((title,position)=>({id:crypto.randomUUID(),planId:id,title,position,week:Math.floor(position/2)+1}));
+   await db.insert(plans).values({id,owner,title,examDate:null,target:'Plano anual: 4 bimestres, com aulas e questões por tema',createdAt:now});
+   const rows=list.map((title,position)=>({id:crypto.randomUUID(),planId:id,title,position,week:schoolWeek(position,list.length)}));
    for(const part of chunks(rows,15))await db.insert(topics).values(part);
    return Response.json({planId:id,count:list.length});
   }
@@ -62,7 +63,8 @@ export async function POST(r:Request){
    const questionId=str(body.questionId,80),response=str(body.response,3000);
    const question=await db.select().from(questions).where(and(eq(questions.id,questionId),eq(questions.owner,owner))).get();if(!question)return fail('Questão não encontrada.',404);
    if(!response)return fail('Escreva sua resposta.');
-   const correct=normalizeAnswer(response)===normalizeAnswer(question.answer);
+   // Múltipla escolha: a resposta precisa ser exatamente a alternativa correta.
+   const correct=question.options?response.trim()===question.answer.trim():normalizeAnswer(response)===normalizeAnswer(question.answer);
    await db.insert(attempts).values({id,owner,questionId,response,correct,gradingMethod:'exact',createdAt:now});
    return Response.json({verdict:correct?'correct':'review',feedback:correct?'Corresponde ao gabarito.':'Texto diferente do gabarito: compare e veja se o sentido é o mesmo.',answer:question.answer,explanation:question.explanation});
   }

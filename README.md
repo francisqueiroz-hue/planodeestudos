@@ -10,14 +10,23 @@ Roda na Cloudflare (Workers + banco D1 + armazenamento R2), com [vinext](https:/
 |---|---|
 | **Página inicial** | Apresentação em cartões (prática, simulado, tutor, foto, plano e progresso) e cadastro/login. |
 | **Início** | Minutos na semana, dias seguidos, % de acertos, temas concluídos, cronômetro (continua contando ao trocar de seção), gráfico de 7 dias, próximos temas e desempenho por disciplina. |
-| **Plano** | Trilha guiada por disciplina ou plano próprio com data da prova; temas agrupados por semana, com aulas externas e atalho para praticar. |
-| **Praticar** | Modos Quiz, Flashcards (cartão que vira, atalhos de teclado), Revisão (só o que você errou), Simulado oral ou escrito (uma pergunta por vez, cronômetro e nota final) e Exercícios (gerar com IA ou criar à mão). Resposta por texto ou voz. |
+| **Plano** | Plano anual (40 semanas, 4 bimestres) por disciplina, com objetivo e conceitos-chave de cada tema, videoaulas vinculadas e atalho para as questões do tema; ou plano próprio com data da prova. |
+| **Praticar** | Banco com 266 questões de múltipla escolha (A–D) e gabarito comentado, cobrindo os 49 temas, com níveis fácil, média e desafio; mais 46 questões abertas. Modos Quiz, Flashcards (cartão que vira, atalhos de teclado), Revisão (só o que você errou), Simulado oral ou escrito (uma pergunta por vez, cronômetro e nota final) e Exercícios (gerar com IA ou criar à mão). Resposta por texto ou voz. |
 | **Tutor** | Chat passo a passo com esfera animada (ouvindo/pensando/falando), ditado, leitura em voz alta, foto do exercício pela câmera e material de apoio. |
 | **Materiais** | Upload de PDF, PNG, JPG ou TXT (até 15 MB), leitura com IA (até 8 MB), anotações e opção de ouvir o conteúdo. |
 
 Voz (ditado e leitura) usa a Web Speech API do navegador: sem custo e sem enviar áudio ao servidor. Funciona melhor no Chrome, Edge e Safari; sem suporte, o simulado oral vira escrito.
 
 Sem chave de IA, o app funciona normalmente e apenas desativa tutor, leitura de arquivos, geração e correção por significado.
+
+## Banco de questões, plano e videoaulas
+
+- `lib/bank/*.ts`: questões autorais por disciplina no formato `[tema, dificuldade, enunciado, alternativas, índice correto, explicação]`. As alternativas são embaralhadas de forma determinística (`lib/bank/index.ts`). `tests/bank.test.ts` confere 4 alternativas distintas, gabarito válido, temas do currículo e a distribuição das respostas.
+- `lib/study-plan.ts`: objetivo e conceitos-chave de cada tema e a distribuição pelas 40 semanas.
+- `lib/resources.ts`: 98 videoaulas (pelo menos 2 por tema) e 10 acervos oficiais (OBMEP, Portal da Matemática, Khan Academy, Saeb/Inep, OBA, ONHB, OBG, BNCC). Questão, plano e vídeo se ligam pelo nome do tema.
+- `docs/plano-de-estudos-8ano.md`: plano completo com questões e gabarito comentado, pronto para imprimir. Gere de novo com `npm run docs:plano` depois de editar os dados.
+- As questões de provas oficiais (OBMEP, Saeb, olimpíadas) **não são copiadas**: ficam nos sites de origem e aparecem como links. Os vídeos foram encontrados por busca na web; confira cada um antes de indicar em aula.
+- Contas já existentes recebem as questões novas automaticamente no próximo login.
 
 ## Estrutura
 

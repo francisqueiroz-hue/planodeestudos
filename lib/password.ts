@@ -68,8 +68,10 @@ export function passwordProblem(password: string): string | null {
 export function normalizeAnswer(value: string): string {
   return value
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
+    .replace(/[\u2212\u2013\u2014]/g, '-') // sinais de menos tipográficos
+    .replace(/-(?=\d)/g, ' NEG') // preserva o sinal de números negativos
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .trim();
 }

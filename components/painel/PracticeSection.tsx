@@ -2,7 +2,7 @@
 import {useEffect,useState} from 'react';
 import {ArrowLeft,Layers,Mic,Pencil,MessageCircle,Repeat,Headphones,ListChecks,GraduationCap,Play,Trash2,RotateCcw,ChevronRight,Shuffle,Square} from 'lucide-react';
 import {curriculum} from '../../lib/curriculum';
-import {Spark,Verdict,lastAttempts,topicFor,shuffle,useVoice,type Question,type Result} from './shared';
+import {LETTERS,LEVELS,Spark,Verdict,lastAttempts,matchSpokenOption,optionsOf,topicFor,shuffle,useVoice,videosFor,type Question,type Result} from './shared';
 import {Simulado} from './Simulado';
 import type {Study} from './useStudy';
 import type {Go} from './Dashboard';
@@ -23,9 +23,9 @@ const tiles:{id:Mode|'tutor'|'ouvir';label:string;icon:React.ReactNode;hint:stri
 export function PracticeSection({study,go,initialTopic,initialMode}:{study:Study;go:Go;initialTopic?:string;initialMode?:Mode}){
  const {data}=study;
  const [mode,setMode]=useState<Mode|null>(initialMode??(initialTopic?'quiz':null));
- const [subject,setSubject]=useState(''),[topic,setTopic]=useState(initialTopic||'');
+ const [subject,setSubject]=useState(''),[topic,setTopic]=useState(initialTopic||''),[level,setLevel]=useState(0);
  const last=lastAttempts(data.attempts);
- const filtered=data.questions.filter(q=>(!subject||q.subject===subject)&&(!topic||topicFor(q)===topic));
+ const filtered=data.questions.filter(q=>(!subject||q.subject===subject)&&(!topic||topicFor(q)===topic)&&(!level||q.difficulty===level));
  const wrong=data.questions.filter(q=>{const a=last.get(q.id);return a&&!a.correct});
 
  if(!mode)return <div className="stack">
@@ -36,6 +36,12 @@ export function PracticeSection({study,go,initialTopic,initialMode}:{study:Study
     <span className="mode-icon">{t.icon}</span><b>{t.label}</b><small>{t.id==='revisao'&&wrong.length?`${wrong.length} para revisar`:t.hint}</small>
    </button>)}</div>
    <p className="note center">{data.questions.length} questões no seu banco · {data.attempts.length} respostas registradas</p>
+  </section>
+  <section className="card wide repos">
+   <h2 className="display"><span className="dim">Quer ir além?</span> Provas e bancos oficiais.</h2>
+   <Spark/>
+   <div className="repo-grid">{data.resources.filter(r=>r.kind==='repository').map(r=><a key={r.id} className="repo" href={r.url} target="_blank" rel="noopener noreferrer"><small className="eyebrow">{r.subject}</small><b>{r.title}</b><span className="note">{r.provider} ↗</span></a>)}</div>
+   <p className="note">As questões desses acervos ficam nos sites de origem, com os direitos de seus autores.</p>
   </section>
  </div>;
 
@@ -54,13 +60,14 @@ export function PracticeSection({study,go,initialTopic,initialMode}:{study:Study
   </header>
   {(mode==='quiz'||mode==='flashcards'||mode==='simulado')&&<div className="row filters">
    <select className="field" aria-label="Disciplina" value={subject} onChange={e=>{setSubject(e.target.value);setTopic('')}}><option value="">Todas as disciplinas</option>{subjects.map(s=><option key={s}>{s}</option>)}</select>
+   <select className="field" aria-label="Nível" value={level} onChange={e=>setLevel(Number(e.target.value))}><option value={0}>Todos os níveis</option>{[1,2,3].map(n=><option key={n} value={n}>{LEVELS[n]}</option>)}</select>
    {topic&&<span className="chip on">{topic} <button aria-label="Remover filtro de tema" onClick={()=>setTopic('')}>×</button></span>}
    <span className="note">{filtered.length} questões</span>
   </div>}
   {mode==='quiz'&&<QuestionList study={study} questions={filtered} empty="Nenhuma questão para este filtro. Gere exercícios com IA ou mude o filtro."/>}
   {mode==='revisao'&&<QuestionList study={study} questions={wrong} empty="Nada para revisar. Quando errar uma questão, ela aparece aqui até você acertar."/>}
-  {mode==='flashcards'&&<Flashcards key={subject+topic} questions={filtered}/>}
-  {mode==='simulado'&&<Simulado key={subject+topic} study={study} pool={filtered}/>}
+  {mode==='flashcards'&&<Flashcards key={subject+topic+level} questions={filtered}/>}
+  {mode==='simulado'&&<Simulado key={subject+topic+level} study={study} pool={filtered}/>}
   {mode==='exercicios'&&<Exercises study={study} onCreated={()=>{setSubject('');setTopic('');setMode('quiz')}}/>}
  </div>;
 }
@@ -76,23 +83,32 @@ function QuestionList({study,questions,empty}:{study:Study;questions:Question[];
 
 function QuestionCard({study,q}:{study:Study;q:Question}){
  const {busy,grade,post,data,setError}=study;
- const [reply,setReply]=useState(''),[result,setResult]=useState<Result|null>(null);
+ const [reply,setReply]=useState(''),[choice,setChoice]=useState<number|null>(null),[result,setResult]=useState<Result|null>(null);
  const voice=useVoice(setError);
- const video=data.resources.find(r=>r.subject===q.subject&&r.topic===topicFor(q)&&r.kind==='video');
- async function check(e:React.FormEvent){e.preventDefault();const r=await grade(q,reply);if(r)setResult(r)}
+ const options=optionsOf(q);
+ const videos=videosFor(data.resources,q.subject,topicFor(q)).slice(0,2);
+ async function check(e?:React.FormEvent){e?.preventDefault();const r=await grade(q,options?(choice===null?'':options[choice]):reply);if(r)setResult(r)}
+ const answered=Boolean(result);
  return <article className="card q-card">
-  <small className="eyebrow">{q.subject||'Questão própria'} · {q.topicLabel||'Tema livre'} · {q.source||'Criada por você'}</small>
+  <small className="eyebrow">{q.subject||'Questão própria'} · {q.topicLabel||'Tema livre'}{q.difficulty?` · ${LEVELS[q.difficulty]}`:''}</small>
   <p className="q-prompt">{q.prompt}</p>
-  <form className="answer-bar" onSubmit={check}>
-   <input value={reply} onChange={e=>setReply(e.target.value)} placeholder="Sua resposta" aria-label={'Resposta para: '+q.prompt}/>
-   {voice.supported&&<button type="button" className={'icon-btn '+(voice.listening?'rec':'')} aria-label={voice.listening?'Parar ditado':'Responder falando'} onClick={()=>voice.listening?voice.stop():voice.listen(t=>setReply(v=>(v?v+' ':'')+t))}>{voice.listening?<Square size={16}/>:<Mic size={16}/>}</button>}
-   <button className="btn sm" disabled={busy||!reply.trim()}>Corrigir</button>
-  </form>
-  {result&&<div className="feedback"><Verdict result={result}/><p><b>Gabarito:</b> {q.answer}</p>{q.explanation&&<p className="note">{q.explanation}</p>}</div>}
+  {options
+   ?<div className="options" role="radiogroup" aria-label={'Alternativas para: '+q.prompt}>
+     {options.map((o,i)=>{const right=answered&&o===q.answer,wrong=answered&&i===choice&&o!==q.answer;return <button key={i} type="button" role="radio" aria-checked={choice===i} disabled={answered} className={'option '+(choice===i?'on ':'')+(right?'right ':'')+(wrong?'wrong':'')} onClick={()=>setChoice(i)}><span className="letter">{LETTERS[i]}</span><span>{o}</span></button>})}
+     {!answered&&<div className="row"><button className="btn sm" disabled={busy||choice===null} onClick={()=>check()}>Corrigir</button>{voice.supported&&<button type="button" className={'icon-btn '+(voice.listening?'rec':'')} aria-label={voice.listening?'Parar':'Responder falando (diga a letra)'} onClick={()=>voice.listening?voice.stop():voice.listen(t=>{const i=matchSpokenOption(t,options);if(i===null)setError(`Não entendi “${t}”. Diga, por exemplo, “letra B”.`);else setChoice(i)})}>{voice.listening?<Square size={16}/>:<Mic size={16}/>}</button>}</div>}
+    </div>
+   :<form className="answer-bar" onSubmit={check}>
+     <input value={reply} onChange={e=>setReply(e.target.value)} placeholder="Sua resposta" aria-label={'Resposta para: '+q.prompt}/>
+     {voice.supported&&<button type="button" className={'icon-btn '+(voice.listening?'rec':'')} aria-label={voice.listening?'Parar ditado':'Responder falando'} onClick={()=>voice.listening?voice.stop():voice.listen(t=>setReply(v=>(v?v+' ':'')+t))}>{voice.listening?<Square size={16}/>:<Mic size={16}/>}</button>}
+     <button className="btn sm" disabled={busy||!reply.trim()}>Corrigir</button>
+    </form>}
+  {result&&<div className="feedback"><Verdict result={result}/><p><b>Gabarito:</b> {options?`${LETTERS[options.indexOf(q.answer)]??''}) `:''}{q.answer}</p>{q.explanation&&<p className="note">{q.explanation}</p>}
+   {options&&<button className="link" onClick={()=>{setResult(null);setChoice(null)}}><RotateCcw size={13}/> Tentar de novo</button>}</div>}
   <div className="q-foot">
-   {video&&<a className="link" href={video.url} target="_blank" rel="noopener noreferrer"><Play size={13}/> Aula: {video.title}</a>}
+   <div className="row">{videos.map(v=><a key={v.id} className="link" href={v.url} target="_blank" rel="noopener noreferrer" title={v.provider}><Play size={13}/> {v.title}</a>)}</div>
    <button className="link danger-link" onClick={async()=>{if(confirm('Excluir esta questão?'))await post('/api/study',{op:'delete',table:'question',id:q.id})}}><Trash2 size={13}/> Excluir</button>
   </div>
+  {q.source&&<small className="source">Fonte: {q.source}</small>}
  </article>;
 }
 

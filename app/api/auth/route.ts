@@ -41,6 +41,8 @@ export async function POST(r:Request){
    const ok=u?await verifyPassword(password,u.passwordSalt,u.passwordHash):(await hashPassword(password,'00'),false);
    if(!u||!ok){await recordFailure(email);return fail('E-mail ou senha incorretos.',401)}
    await clearFailures(email);
+   // Instala questões novas do banco para quem já tinha conta.
+   await seedQuestions(u.id).catch(e=>console.error('seed on login',e));
    return withSession(r,{user:{id:u.id,email:u.email,name:u.name}},await createSession(u.id));
   }
   return fail('Ação inválida.');

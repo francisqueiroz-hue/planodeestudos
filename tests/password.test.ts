@@ -35,6 +35,10 @@ test('correção literal ignora acentos, caixa e pontuação', ()=>{
  assert.equal(normalizeAnswer('  Conclusão. '),normalizeAnswer('conclusao'));
  assert.equal(normalizeAnswer('R$ 60'),normalizeAnswer('r 60'));
  assert.notEqual(normalizeAnswer('x = 5'),normalizeAnswer('x = 6'));
+ assert.notEqual(normalizeAnswer('−81'),normalizeAnswer('81'));
+ assert.equal(normalizeAnswer('−81'),normalizeAnswer('-81'));
+ assert.equal(normalizeAnswer('x = -5'),normalizeAnswer('x=−5'));
+ assert.equal(normalizeAnswer('Leste-oeste'),normalizeAnswer('leste oeste'));
 });
 
 test('distribuição de temas por semana', ()=>{
