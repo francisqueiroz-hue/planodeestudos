@@ -16,7 +16,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate:local": "wrangler d1 migrations apply DB --local --persist-to .wrangler/state",
     "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
-    "docs:plano": "node --experimental-strip-types scripts/gerar-plano.ts"
+    "docs:plano": "node --experimental-strip-types scripts/gerar-plano.ts",
+    "build:standalone": "node scripts/build-standalone.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
@@ -57,6 +58,7 @@
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",
+    "esbuild": "0.28.0",
     "eslint": "9.39.4",
     "eslint-config-next": "16.3.4",
     "react-server-dom-webpack": "19.2.6",
