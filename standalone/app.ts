@@ -281,12 +281,28 @@ function viewTutor(){
   h('div',{class:'card'},log,input,h('div',{class:'row'},send,S.chat.length?h('button',{class:'ghost small',onclick:()=>{S.chat=[];render()}},'Limpar conversa'):null),status));
 }
 
+// ---------- Cópia de segurança do progresso (para levar do computador ao celular e vice-versa) ----------
+function toCode(p:Progress){return btoa(unescape(encodeURIComponent(JSON.stringify(p))))}
+function fromCode(code:string):Progress|null{
+ try{const o=JSON.parse(decodeURIComponent(escape(atob(code.replace(/\s+/g,'')))));return o&&typeof o==='object'&&o.answers?{answers:o.answers||{},done:o.done||{},drills:o.drills||{},updated:Number(o.updated)||0}:null}catch{return null}
+}
+function backupPanel(){
+ const out=h('textarea',{id:'backup-code',rows:'3',readonly:true,hidden:true,'aria-label':'Código do progresso'}) as HTMLTextAreaElement;
+ const inp=h('textarea',{id:'restore-code',rows:'3',placeholder:'Cole aqui o código copiado no outro aparelho','aria-label':'Código para restaurar'}) as HTMLTextAreaElement;
+ const msg=h('p',{class:'dim',role:'status'});
+ return h('details',{class:'card backup'},h('summary',{},'Levar o progresso para outro aparelho'),
+  h('p',{class:'dim'},'O progresso fica salvo em cada aparelho. Para juntar: gere o código aqui, envie para você mesmo (WhatsApp ou e-mail) e cole no outro aparelho.'),
+  h('div',{class:'row'},h('button',{class:'secondary small',onclick:async()=>{out.value=toCode(P);out.hidden=false;try{await navigator.clipboard.writeText(out.value);msg.textContent='Código copiado. Cole no outro aparelho em “Restaurar”.'}catch{out.select();msg.textContent='Selecione e copie o código acima.'}}},'Gerar e copiar código')),
+  out,inp,
+  h('div',{class:'row'},h('button',{class:'primary small',onclick:()=>{const p=fromCode(inp.value);if(!p){msg.textContent='Código inválido. Confira se copiou o código inteiro.';return}P=merge(P,p);persist();inp.value='';msg.textContent='Progresso juntado com sucesso.';render()}},'Restaurar / juntar progresso')),msg);
+}
+
 // ---------- Renderização ----------
 function render(){
  const app=$('#app');
  const views:Record<View,()=>HTMLElement>={mat:viewMat,treino:viewTreino,simulado:viewSimulado,revisao:viewRevisao,plano:viewPlano,questoes:viewQuestoes,tutor:viewTutor};
  if(S.view==='tutor'&&!sample)S.view='mat';
- app.replaceChildren(header(),views[S.view](),h('footer',{},h('span',{id:'sync','data-state':syncState}),h('span',{},' · Questões autorais; vídeos e acervos são links externos.')));
+ app.replaceChildren(header(),views[S.view](),S.view==='plano'||S.view==='mat'?backupPanel():'',h('footer',{},h('span',{id:'sync','data-state':syncState}),h('span',{},' · Questões autorais; vídeos e acervos são links externos.')));
  setSync(syncState);
 }
 render();

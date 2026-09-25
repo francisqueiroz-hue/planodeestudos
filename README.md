@@ -20,6 +20,10 @@ Voz (ditado e leitura) usa a Web Speech API do navegador: sem custo e sem enviar
 
 Sem chave de IA, o app funciona normalmente e apenas desativa tutor, leitura de arquivos, geração e correção por significado.
 
+## Instalar no computador e no celular do estudante (sem servidor)
+
+A pasta `standalone/app/` é um aplicativo instalável (PWA) com Matemática em foco, as 399 questões, treino rápido, simulado, revisão e plano. Ele funciona sem internet e sem conta, e guarda o progresso no aparelho. Para publicar, arraste `standalone/painel-de-estudos-app.zip` no [Netlify Drop](https://app.netlify.com/drop) (com conta gratuita) e envie o link. O passo a passo completo está em [`docs/INSTALAR.md`](docs/INSTALAR.md). Para gerar de novo depois de editar as questões, use `npm run build:standalone`.
+
 ## Uso pessoal
 
 - A primeira conta criada é a sua. Depois dela, **o cadastro fica fechado**: ninguém mais consegue criar conta, e a tela inicial só mostra “Entrar”. Isso protege seus dados e o custo da IA.
