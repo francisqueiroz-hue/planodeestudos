@@ -298,3 +298,10 @@ button.mode-tile:hover{transform:translateY(-3px);color:var(--text);background:v
 .topic-actions .link{align-items:flex-start;text-align:left;padding:0}
 .topic-actions .link svg{margin-top:3px}
 .topic-info ul{list-style:disc}
+
+/* ---------- Matemática em foco ---------- */
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.topic-card{align-items:stretch;text-align:left;padding:24px;gap:10px}
+.topic-card h3{margin:0;font-size:19px;letter-spacing:-.02em}
+.topic-card .note{font-size:13px}
+.drill svg.lucide-trophy{color:var(--warn)}

@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useState} from 'react';
-import {House,CalendarDays,ListChecks,MessageCircle,FileText,Timer,Square,X} from 'lucide-react';
+import {House,Calculator,CalendarDays,ListChecks,MessageCircle,FileText,Timer,Square,X} from 'lucide-react';
 import {curriculum} from '../../lib/curriculum';
 import {useStudy} from './useStudy';
 import {Overview} from './Overview';
@@ -8,12 +8,14 @@ import {PlanSection} from './PlanSection';
 import {PracticeSection,type Mode} from './PracticeSection';
 import {TutorSection} from './TutorSection';
 import {MaterialsSection} from './MaterialsSection';
+import {MathHub} from './MathHub';
 
-export type Section='inicio'|'plano'|'praticar'|'tutor'|'materiais';
-export type Go=(section:Section,opts?:{topic?:string;mode?:Mode})=>void;
+export type Section='matematica'|'inicio'|'plano'|'praticar'|'tutor'|'materiais';
+export type Go=(section:Section,opts?:{topic?:string;mode?:Mode;subject?:string})=>void;
 export type Clock={seconds:number;running:boolean;subject:string;setSubject:(s:string)=>void;start:()=>void;stop:()=>void};
 
 const nav:{id:Section;label:string;icon:React.ReactNode}[]=[
+ {id:'matematica',label:'Matemática',icon:<Calculator size={16}/>},
  {id:'inicio',label:'Início',icon:<House size={16}/>},
  {id:'plano',label:'Plano',icon:<CalendarDays size={16}/>},
  {id:'praticar',label:'Praticar',icon:<ListChecks size={16}/>},
@@ -24,8 +26,9 @@ const nav:{id:Section;label:string;icon:React.ReactNode}[]=[
 export function Dashboard({name,onExpired}:{name:string;onExpired:()=>void}){
  const study=useStudy(onExpired);
  const {error,message,setError,setMessage,loaded,post}=study;
- const [section,setSection]=useState<Section>('inicio');
- const [practice,setPractice]=useState<{topic?:string;mode?:Mode;n:number}>({n:0});
+ // Matemática é o foco da plataforma: é a primeira tela depois do login.
+ const [section,setSection]=useState<Section>('matematica');
+ const [practice,setPractice]=useState<{topic?:string;mode?:Mode;subject?:string;n:number}>({n:0});
 
  // Cronômetro fica aqui para continuar contando ao trocar de seção.
  const [seconds,setSeconds]=useState(0),[running,setRunning]=useState(false),[subject,setSubject]=useState(Object.keys(curriculum)[0]);
@@ -55,9 +58,10 @@ export function Dashboard({name,onExpired}:{name:string;onExpired:()=>void}){
 
   {!loaded&&<p className="note center" role="status">Carregando seus dados…</p>}
   <div className="section-body" aria-busy={study.busy}>
+   {section==='matematica'&&<MathHub study={study} go={go}/>}
    {section==='inicio'&&<Overview study={study} name={name} go={go} clock={clock}/>}
    {section==='plano'&&<PlanSection study={study} go={go}/>}
-   {section==='praticar'&&<PracticeSection key={practice.n} study={study} go={go} initialTopic={practice.topic} initialMode={practice.mode}/>}
+   {section==='praticar'&&<PracticeSection key={practice.n} study={study} go={go} initialTopic={practice.topic} initialMode={practice.mode} initialSubject={practice.subject}/>}
    {section==='tutor'&&<TutorSection study={study}/>}
    {section==='materiais'&&<MaterialsSection study={study}/>}
   </div>

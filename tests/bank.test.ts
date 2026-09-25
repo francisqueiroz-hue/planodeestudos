@@ -25,3 +25,14 @@ test('enunciados únicos e gabarito bem distribuído entre as posições', ()=>{
  const pos=[0,0,0,0];for(const q of bankQuestions)pos[q.options.indexOf(q.answer)]++;
  for(const p of pos)assert.ok(p>bankQuestions.length*0.15,`distribuição desigual: ${pos}`);
 });
+
+test('todo tema tem plano e pelo menos 2 videoaulas; Matemática tem ao menos 15 questões por tema', async()=>{
+ const {resources}=await import('../lib/resources.ts');
+ const {topicPlans}=await import('../lib/study-plan.ts');
+ for(const [subject,topics] of Object.entries(curriculum))for(const t of topics){
+  assert.ok(topicPlans[subject]?.[t],`sem plano: ${t}`);
+  assert.ok(resources.filter(r=>r.subject===subject&&r.topic===t&&r.kind!=='repository').length>=2,`poucas aulas: ${t}`);
+ }
+ for(const t of curriculum['Matemática'])assert.ok(bankQuestions.filter(q=>q.subject==='Matemática'&&q.topic===t).length>=15,`Matemática com poucas questões: ${t}`);
+ assert.equal(new Set(resources.map(r=>r.id)).size,resources.length,'ids de recursos repetidos');
+});

@@ -9,11 +9,15 @@ export const topicPlans:Record<string,Record<string,TopicPlan>>={
  'Matemática':{
   'Potenciação e radiciação':{objective:'Calcular potências com expoente inteiro, aplicar suas propriedades e relacionar potências e raízes.',concepts:['expoente negativo','propriedades das potências','raiz quadrada exata e aproximada']},
   'Notação científica':{objective:'Escrever e comparar números muito grandes ou muito pequenos em notação científica e operar com eles.',concepts:['potências de 10','multiplicação e divisão em notação científica','ordem de grandeza']},
+  'Dízimas periódicas e frações geratrizes':{objective:'Reconhecer dízimas periódicas, obter a fração geratriz e diferenciar números racionais e irracionais.',concepts:['decimal exato e dízima','fração geratriz','racionais e irracionais']},
   'Porcentagens e juros simples':{objective:'Resolver problemas com porcentagens, acréscimos, descontos e juros simples em situações do cotidiano.',concepts:['fator de aumento e de desconto','aumentos sucessivos','J = C · i · t']},
+  'Contagem e princípio multiplicativo':{objective:'Resolver problemas de contagem com o princípio multiplicativo e a árvore de possibilidades.',concepts:['princípio multiplicativo','com e sem repetição','quando a ordem importa']},
   'Expressões algébricas e produtos notáveis':{objective:'Calcular o valor numérico de expressões, simplificar termos semelhantes e usar produtos notáveis e fatoração.',concepts:['termos semelhantes','quadrado da soma e da diferença','produto da soma pela diferença']},
   'Equações do 1º grau e sistemas':{objective:'Modelar problemas com equações do 1º grau e sistemas de duas incógnitas e resolvê-los por adição ou substituição.',concepts:['equação equivalente','método da adição','método da substituição']},
+  'Grandezas proporcionais':{objective:'Identificar grandezas diretamente e inversamente proporcionais e resolver problemas com regra de três, escalas e razões.',concepts:['direta e inversamente proporcionais','regra de três','escala e velocidade média']},
   'Geometria: ângulos, polígonos e congruência':{objective:'Calcular ângulos internos e diagonais de polígonos e reconhecer os casos de congruência de triângulos.',concepts:['soma dos ângulos internos','ângulos complementares e suplementares','casos LLL, LAL, ALA e LAAo']},
   'Área de figuras planas':{objective:'Calcular áreas de quadriláteros, triângulos e círculos e aplicá-las em problemas práticos.',concepts:['área do trapézio e do losango','área do círculo','relação entre lado e área']},
+  'Volume e capacidade':{objective:'Calcular volumes de cubos, paralelepípedos, prismas e cilindros e relacionar volume e capacidade.',concepts:['cm³, dm³ e m³','1 L = 1 dm³','volume do prisma e do cilindro']},
   'Probabilidade e estatística':{objective:'Calcular probabilidades simples e interpretar dados usando média, moda e mediana.',concepts:['espaço amostral','medidas de tendência central','leitura de tabelas e gráficos']},
  },
  'Língua Portuguesa':{

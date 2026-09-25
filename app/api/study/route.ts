@@ -3,10 +3,8 @@ import {getDb} from '../../../db';
 import {materials,plans,topics,questions,attempts,resourceCatalog} from '../../../db/schema';
 import {eq,and,desc,inArray} from 'drizzle-orm';
 import {resources} from '../../../lib/resources';
-import {curriculum} from '../../../lib/curriculum';
 import {currentUserId} from '../../../lib/auth';
-import {catalogOutdated,chunks,ensureCatalog,seedQuestions} from '../../../lib/bootstrap';
-import {schoolWeek} from '../../../lib/study-plan.ts';
+import {catalogOutdated,chunks,createTrail,ensureBank,ensureCatalog,seedQuestions} from '../../../lib/bootstrap';
 import {normalizeAnswer} from '../../../lib/password';
 import {weekFor} from '../../../lib/planning';
 
@@ -16,6 +14,8 @@ export async function GET(r:Request){
  const owner=await currentUserId(r);if(!owner)return fail('Entre na sua conta para usar o painel.',401);
  try{
   const db=getDb();
+  // Instala questões novas do banco (por exemplo, após uma atualização do app).
+  await ensureBank(owner);
   const [m,p,q,a]=await Promise.all([
    db.select().from(materials).where(eq(materials.owner,owner)).orderBy(desc(materials.createdAt)),
    db.select().from(plans).where(eq(plans.owner,owner)).orderBy(desc(plans.createdAt)),
@@ -48,14 +48,9 @@ export async function POST(r:Request){
   if(op==='topic'){const topicId=str(body.id,80);const status=str(body.status,20);if(!['pending','done'].includes(status))return fail('Estado inválido.');const record=await db.select({id:topics.id}).from(topics).innerJoin(plans,eq(topics.planId,plans.id)).where(and(eq(topics.id,topicId),eq(plans.owner,owner))).get();if(!record)return fail('Tema não encontrado.',404);await db.update(topics).set({status}).where(eq(topics.id,topicId));return Response.json({ok:true})}
   if(op==='catalog'){await ensureCatalog();return Response.json({count:resources.length})}
   if(op==='path'){
-   const subject=str(body.subject,80);const list=curriculum[subject];if(!list)return fail('Disciplina inválida.');
-   const title=`Trilha de ${subject} · 8º ano`;
-   const previous=await db.select().from(plans).where(and(eq(plans.owner,owner),eq(plans.title,title))).limit(1);
-   if(previous.length)return Response.json({planId:previous[0].id,count:list.length,notice:'Esta trilha já existe no seu plano.'});
-   await db.insert(plans).values({id,owner,title,examDate:null,target:'Plano anual: 4 bimestres, com aulas e questões por tema',createdAt:now});
-   const rows=list.map((title,position)=>({id:crypto.randomUUID(),planId:id,title,position,week:schoolWeek(position,list.length)}));
-   for(const part of chunks(rows,15))await db.insert(topics).values(part);
-   return Response.json({planId:id,count:list.length});
+   const subject=str(body.subject,80);
+   const res=await createTrail(owner,subject);if(!res)return fail('Disciplina inválida.');
+   return Response.json({planId:res.planId,count:res.count,...(res.existed?{notice:'Esta trilha já existe no seu plano.'}:{})});
   }
   if(op==='seed'){const count=await seedQuestions(owner);return Response.json({count,notice:count?'Banco atualizado.':'O banco inicial já está instalado.'})}
   if(op==='question'){const prompt=str(body.prompt,3000),answer=str(body.answer,3000);if(!prompt||!answer)return fail('Informe a pergunta e a resposta.');const [row]=await db.insert(questions).values({id,owner,prompt,answer,topicId:null,topicLabel:str(body.topic,160)||null,subject:str(body.subject,80)||null,source:'Criada por você',createdAt:now}).returning();return Response.json({item:row})}

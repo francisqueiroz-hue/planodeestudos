@@ -1,6 +1,6 @@
 # Plano de estudos · 8º ano do Ensino Fundamental
 
-Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escolha com gabarito comentado, distribuídas em 49 temas de 8 disciplinas.
+Gerado a partir dos dados do Painel de Estudos. 399 questões de múltipla escolha com gabarito comentado, distribuídas em 53 temas de 8 disciplinas.
 
 - **Organização:** 40 semanas letivas, em 4 bimestres de 10 semanas. Cada tema começa na semana indicada e segue até o próximo.
 - **Rotina sugerida por tema:** assistir às videoaulas, fazer as questões no modo Quiz, revisar os erros no modo Revisão e fechar com um Simulado.
@@ -11,7 +11,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 
 | Disciplina | 1º bimestre | 2º bimestre | 3º bimestre | 4º bimestre |
 |---|---|---|---|---|
-| Matemática | Potenciação e radiciação; Notação científica | Porcentagens e juros simples; Expressões algébricas e produtos notáveis | Equações do 1º grau e sistemas; Geometria: ângulos, polígonos e congruência | Área de figuras planas; Probabilidade e estatística |
+| Matemática | Potenciação e radiciação; Notação científica; Dízimas periódicas e frações geratrizes | Porcentagens e juros simples; Contagem e princípio multiplicativo; Expressões algébricas e produtos notáveis | Equações do 1º grau e sistemas; Grandezas proporcionais; Geometria: ângulos, polígonos e congruência | Área de figuras planas; Volume e capacidade; Probabilidade e estatística |
 | Língua Portuguesa | Leitura e interpretação de textos; Argumentação e artigo de opinião | Coesão e coerência; Orações e períodos | Vozes verbais; Pontuação e efeitos de sentido | Gêneros jornalísticos e digitais; Análise de fontes e checagem de informações |
 | Ciências | Fontes e transformação de energia; Circuitos elétricos e consumo responsável | Reprodução e sexualidade com respeito e informação | Sistema Sol, Terra e Lua; Fases da Lua e eclipses | Clima e mudanças climáticas |
 | História | Iluminismo; Revolução Industrial | Independência dos Estados Unidos; Revolução Francesa | Independências na América Latina; Brasil no século XIX e período regencial | Escravidão, resistências e abolição |
@@ -36,7 +36,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Propriedades das potências](https://www.youtube.com/watch?v=-wg4hnKpk18) — Portal da Matemática OBMEP / IMPA
 - [Raiz quadrada de um número](https://www.youtube.com/watch?v=XqwstHtx8gQ) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Qual é o valor de (−3)⁴? _(fácil)_
    - A) 81
@@ -74,6 +74,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 7 e 8
    - D) 8 e 9
 
+7. Quanto vale 10⁰? _(fácil)_
+   - A) 0
+   - B) 1
+   - C) Não existe
+   - D) 10
+
+8. Quanto é 3² + 4²? _(fácil)_
+   - A) 7
+   - B) 49
+   - C) 14
+   - D) 25
+
+9. Qual é o valor de (−2)³? _(média)_
+   - A) −6
+   - B) −8
+   - C) 6
+   - D) 8
+
+10. Simplifique 2⁴ · 2⁻². _(média)_
+   - A) 8
+   - B) 4
+   - C) 2⁻⁸
+   - D) 1/4
+
+11. Quanto é √0,25? _(média)_
+   - A) 0,125
+   - B) 5
+   - C) 0,05
+   - D) 0,5
+
+12. Qual é a raiz cúbica de 64? _(média)_
+   - A) 16
+   - B) 32
+   - C) 4
+   - D) 8
+
+13. Quanto é (3/2)²? _(média)_
+   - A) 3/4
+   - B) 9/4
+   - C) 9/2
+   - D) 6/4
+
+14. Calcule 5² − (−5)² + (−5)⁰. _(desafio)_
+   - A) 51
+   - B) −49
+   - C) 0
+   - D) 1
+
+15. Qual é maior: 2¹⁰ ou 10³? _(desafio)_
+   - A) São iguais
+   - B) 10³, que vale 1 000
+   - C) 2¹⁰, que vale 1 024
+   - D) 10³, que vale 30
+
 <details><summary>Gabarito comentado</summary>
 
 1. **A) 81**: Expoente par com base negativa dá resultado positivo: (−3)·(−3)·(−3)·(−3) = 81.
@@ -82,12 +136,21 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **A) 1/8**: Expoente negativo inverte a base: 2⁻³ = 1/2³ = 1/8.
 5. **C) 2⁶**: Potência de potência: multiplicam-se os expoentes, 3 × 2 = 6. Logo (2³)² = 2⁶ = 64.
 6. **C) 7 e 8**: 7² = 49 e 8² = 64. Como 49 < 50 < 64, √50 está entre 7 e 8 (bem perto de 7).
+7. **B) 1**: Toda potência de base diferente de zero com expoente 0 vale 1.
+8. **D) 25**: 3² = 9 e 4² = 16; 9 + 16 = 25. Atenção: (3 + 4)² = 49 é outra conta.
+9. **B) −8**: Expoente ímpar mantém o sinal negativo: (−2)·(−2)·(−2) = −8.
+10. **B) 4**: Multiplicação de mesma base: somam-se os expoentes, 4 + (−2) = 2. Logo 2² = 4.
+11. **D) 0,5**: 0,5 × 0,5 = 0,25. Também: √(25/100) = 5/10 = 0,5.
+12. **C) 4**: 4 × 4 × 4 = 64. (8 é a raiz quadrada de 64.)
+13. **B) 9/4**: Eleva-se numerador e denominador: 3² / 2² = 9/4.
+14. **D) 1**: 5² = 25, (−5)² = 25 e (−5)⁰ = 1. Então 25 − 25 + 1 = 1.
+15. **C) 2¹⁰, que vale 1 024**: 2¹⁰ = 1 024 e 10³ = 1 000. Por pouco, 2¹⁰ é maior.
 
 </details>
 
 ### Notação científica
 
-**Semana 6 · 1º bimestre**
+**Semana 4 · 1º bimestre**
 
 **Objetivo:** Escrever e comparar números muito grandes ou muito pequenos em notação científica e operar com eles.
 
@@ -98,7 +161,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Notação científica](https://www.youtube.com/watch?v=_qriP0nCMD0) — Portal da Matemática OBMEP / IMPA
 - [Notação Científica e Dízimas Periódicas I – 04](https://www.youtube.com/watch?v=apx0IFD-Xfs) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Como se escreve 45 000 000 em notação científica? _(fácil)_
    - A) 4,5 × 10⁶
@@ -136,6 +199,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 3,2 × 10⁵
    - D) 9,9 × 10⁴
 
+7. Como se escreve 3,2 × 10⁴ na forma decimal? _(fácil)_
+   - A) 3 200
+   - B) 320 000
+   - C) 0,00032
+   - D) 32 000
+
+8. Como se escreve 7 × 10⁻³ na forma decimal? _(fácil)_
+   - A) 7 000
+   - B) 0,07
+   - C) 0,0007
+   - D) 0,007
+
+9. Como se escreve 0,000000001 em notação científica? _(média)_
+   - A) 1 × 10⁻⁸
+   - B) 1 × 10⁹
+   - C) 1 × 10⁻⁹
+   - D) 1 × 10⁻¹⁰
+
+10. Qual é o resultado de (5 × 10⁶) × (4 × 10²), em notação científica? _(média)_
+   - A) 2 × 10⁹
+   - B) 2 × 10¹²
+   - C) 9 × 10⁸
+   - D) 2 × 10⁸
+
+11. Qual é o resultado de (6 × 10⁻⁴) ÷ (3 × 10²)? _(média)_
+   - A) 2 × 10⁻⁶
+   - B) 2 × 10⁻²
+   - C) 3 × 10⁻⁶
+   - D) 2 × 10⁶
+
+12. A população mundial é de cerca de 8 bilhões de pessoas. Em notação científica, isso é: _(média)_
+   - A) 80 × 10⁸
+   - B) 8 × 10⁶
+   - C) 8 × 10¹²
+   - D) 8 × 10⁹
+
+13. A luz percorre cerca de 300 000 km por segundo. Em notação científica, isso é: _(média)_
+   - A) 30 × 10⁴ km/s
+   - B) 3 × 10⁸ km/s
+   - C) 3 × 10⁵ km/s
+   - D) 3 × 10⁶ km/s
+
+14. Qual opção está em ordem crescente? _(desafio)_
+   - A) 4 × 10⁻² < 3 × 10⁻³ < 5 × 10⁻²
+   - B) 3 × 10⁻³ < 4 × 10⁻² < 5 × 10⁻²
+   - C) 5 × 10⁻² < 4 × 10⁻² < 3 × 10⁻³
+   - D) 3 × 10⁻³ < 5 × 10⁻² < 4 × 10⁻²
+
+15. Quanto é (2 × 10³)²? _(desafio)_
+   - A) 4 × 10⁹
+   - B) 4 × 10⁶
+   - C) 4 × 10⁵
+   - D) 2 × 10⁶
+
 <details><summary>Gabarito comentado</summary>
 
 1. **D) 4,5 × 10⁷**: Na notação científica, o número antes da potência fica entre 1 e 10: 4,5. A vírgula anda 7 casas, então 4,5 × 10⁷.
@@ -144,6 +261,147 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **B) 1,5 × 10⁸ km**: 150 milhões = 150 000 000 = 1,5 × 10⁸. A opção 15 × 10⁷ tem o mesmo valor, mas não está em notação científica (15 não fica entre 1 e 10).
 5. **B) 4 × 10⁶**: Dividem-se os números (8 ÷ 2 = 4) e subtraem-se os expoentes (9 − 3 = 6).
 6. **B) 1,1 × 10⁶**: Compare primeiro os expoentes: 10⁶ é o maior. 1,1 × 10⁶ = 1 100 000, maior que 500 000.
+7. **D) 32 000**: Multiplicar por 10⁴ desloca a vírgula 4 casas para a direita: 32 000.
+8. **D) 0,007**: Expoente −3: a vírgula anda 3 casas para a esquerda, 7 → 0,007.
+9. **C) 1 × 10⁻⁹**: A vírgula anda 9 casas para a direita até o 1, então o expoente é −9.
+10. **A) 2 × 10⁹**: 5 × 4 = 20 e 10⁶ × 10² = 10⁸. Então 20 × 10⁸ = 2 × 10⁹, pois o número antes da potência deve ficar entre 1 e 10.
+11. **A) 2 × 10⁻⁶**: 6 ÷ 3 = 2 e −4 − 2 = −6. Logo 2 × 10⁻⁶.
+12. **D) 8 × 10⁹**: 1 bilhão = 10⁹. A opção 80 × 10⁸ tem o mesmo valor, mas não está em notação científica.
+13. **C) 3 × 10⁵ km/s**: 300 000 = 3 × 10⁵. O valor 3 × 10⁸ vale em metros por segundo, não em km/s.
+14. **B) 3 × 10⁻³ < 4 × 10⁻² < 5 × 10⁻²**: Em decimais: 0,003 < 0,04 < 0,05. Expoente mais negativo significa número menor.
+15. **B) 4 × 10⁶**: (2 × 10³)² = 2² × (10³)² = 4 × 10⁶.
+
+</details>
+
+### Dízimas periódicas e frações geratrizes
+
+**Semana 7 · 1º bimestre**
+
+**Objetivo:** Reconhecer dízimas periódicas, obter a fração geratriz e diferenciar números racionais e irracionais.
+
+**Conceitos-chave:** decimal exato e dízima; fração geratriz; racionais e irracionais.
+
+**Videoaulas:**
+
+- [Fração geratriz de uma dízima periódica | Rioeduca na TV – 8º ano](https://www.youtube.com/watch?v=fwDUlo0d-hw) — Rioeduca na TV
+- [8º ano – Matemática – Dízimas periódicas e fração geratriz](https://www.youtube.com/watch?v=aLu_SAbTieg) — YouTube
+
+**Questões (16):**
+
+1. Qual destes números é uma dízima periódica? _(fácil)_
+   - A) 0,333...
+   - B) 1,75
+   - C) 0,5
+   - D) 0,25
+
+2. Qual é a fração geratriz de 0,333...? _(fácil)_
+   - A) 33/100
+   - B) 1/3
+   - C) 1/30
+   - D) 3/10
+
+3. A fração 2/5 corresponde a: _(fácil)_
+   - A) 0,25
+   - B) 2,5
+   - C) 0,4, um decimal exato
+   - D) 0,444..., uma dízima periódica
+
+4. Qual é a fração geratriz de 0,777...? _(média)_
+   - A) 9/7
+   - B) 7/9
+   - C) 77/100
+   - D) 7/10
+
+5. Qual é a fração geratriz de 0,121212...? _(média)_
+   - A) 12/100
+   - B) 4/33
+   - C) 1/12
+   - D) 12/9
+
+6. Como se escreve 1/6 na forma decimal? _(média)_
+   - A) 0,1616...
+   - B) 0,1666...
+   - C) 0,666...
+   - D) 0,6
+
+7. Qual é o período da dízima 2,454545...? _(média)_
+   - A) 454
+   - B) 4
+   - C) 2
+   - D) 45
+
+8. Qual é a fração geratriz de 1,555...? _(média)_
+   - A) 155/100
+   - B) 5/9
+   - C) 14/9
+   - D) 15/9
+
+9. Qual é a fração geratriz de 0,1666...? _(média)_
+   - A) 1/6
+   - B) 16/99
+   - C) 1/60
+   - D) 16/90
+
+10. Qual destas frações gera um decimal exato? _(média)_
+   - A) 3/8
+   - B) 2/7
+   - C) 1/3
+   - D) 5/6
+
+11. Qual é a fração geratriz de 0,999...? _(desafio)_
+   - A) 9/10
+   - B) 1
+   - C) 99/100
+   - D) 0,9
+
+12. Qual é a fração geratriz de 0,0333...? _(média)_
+   - A) 1/33
+   - B) 1/30
+   - C) 3/100
+   - D) 1/3
+
+13. Quanto é 0,333... + 0,666...? _(desafio)_
+   - A) 0,9
+   - B) 1
+   - C) 1,1
+   - D) 0,99
+
+14. Um número racional é aquele que: _(fácil)_
+   - A) é sempre negativo
+   - B) pode ser escrito como fração de inteiros, com denominador diferente de zero
+   - C) tem infinitas casas decimais sem repetição
+   - D) é sempre inteiro
+
+15. Qual destes números é irracional? _(desafio)_
+   - A) √2
+   - B) 3/7
+   - C) 0,555...
+   - D) √9
+
+16. Qual é a fração geratriz de 2,333...? _(média)_
+   - A) 7/3
+   - B) 23/10
+   - C) 23/9
+   - D) 2/3
+
+<details><summary>Gabarito comentado</summary>
+
+1. **A) 0,333...**: Na dízima periódica, um algarismo ou grupo se repete infinitamente. Os outros são decimais exatos.
+2. **B) 1/3**: Período de um algarismo: 3/9, que simplificado é 1/3.
+3. **C) 0,4, um decimal exato**: 2 ÷ 5 = 0,4. O denominador 5 gera decimal exato.
+4. **B) 7/9**: Dízima simples com período de 1 algarismo: o período sobre 9, então 7/9.
+5. **B) 4/33**: Período de 2 algarismos: 12/99. Simplificando por 3: 4/33.
+6. **B) 0,1666...**: 1 ÷ 6 = 0,1666...: dízima composta (o 1 não se repete, o 6 sim).
+7. **D) 45**: O período é o grupo que se repete: 45.
+8. **C) 14/9**: 1,555... = 1 + 5/9 = 9/9 + 5/9 = 14/9.
+9. **A) 1/6**: Dízima composta: (16 − 1)/90 = 15/90 = 1/6.
+10. **A) 3/8**: Uma fração irredutível gera decimal exato quando o denominador só tem fatores 2 e 5: 8 = 2³, e 3/8 = 0,375.
+11. **B) 1**: Pela regra, 0,999... = 9/9 = 1. É o mesmo número que 1, escrito de outra forma.
+12. **B) 1/30**: 0,0333... = 0,333... ÷ 10 = (1/3) ÷ 10 = 1/30.
+13. **B) 1**: 1/3 + 2/3 = 3/3 = 1.
+14. **B) pode ser escrito como fração de inteiros, com denominador diferente de zero**: Decimais exatos e dízimas periódicas são racionais, pois têm fração geratriz.
+15. **A) √2**: √2 = 1,41421... tem infinitas casas sem período. √9 = 3, e as outras opções são frações.
+16. **A) 7/3**: 2,333... = 2 + 3/9 = 2 + 1/3 = 7/3.
 
 </details>
 
@@ -160,7 +418,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Porcentagem: definição e exemplos](https://www.youtube.com/watch?v=L6IY8izDAqs) — Portal da Matemática OBMEP / IMPA
 - [Porcentagem: resolução de exercícios](https://www.youtube.com/watch?v=Jw4lqsQ4ibA) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Quanto é 20% de 150? _(fácil)_
    - A) 30
@@ -198,6 +456,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) R$ 3.000
    - D) R$ 6.000
 
+7. Quanto é 50% de 84? _(fácil)_
+   - A) 50
+   - B) 42
+   - C) 34
+   - D) 4,2
+
+8. Quanto é 10% de 350? _(fácil)_
+   - A) 10
+   - B) 35
+   - C) 3,5
+   - D) 340
+
+9. Um tênis de R$ 250 está com 20% de desconto. Qual é o preço com desconto? _(média)_
+   - A) R$ 230
+   - B) R$ 50
+   - C) R$ 200
+   - D) R$ 270
+
+10. Um salário de R$ 2.000 passou para R$ 2.300. Qual foi o aumento percentual? _(média)_
+   - A) 15%
+   - B) 3%
+   - C) 13%
+   - D) 30%
+
+11. Qual é o montante de R$ 500 aplicados a juros simples de 2% ao mês por 6 meses? _(média)_
+   - A) R$ 60
+   - B) R$ 510
+   - C) R$ 560
+   - D) R$ 600
+
+12. Escreva 3/4 como porcentagem. _(média)_
+   - A) 43%
+   - B) 75%
+   - C) 3,4%
+   - D) 34%
+
+13. Depois de um desconto de 25%, um produto custa R$ 90. Qual era o preço original? _(desafio)_
+   - A) R$ 115
+   - B) R$ 112,50
+   - C) R$ 67,50
+   - D) R$ 120
+
+14. Em quantos meses R$ 1.000 rendem R$ 150 de juros simples a 1,5% ao mês? _(desafio)_
+   - A) 100 meses
+   - B) 5 meses
+   - C) 15 meses
+   - D) 10 meses
+
+15. Numa pesquisa com 200 pessoas, 30% preferem vôlei. Quantas pessoas preferem vôlei? _(média)_
+   - A) 6
+   - B) 70
+   - C) 60
+   - D) 30
+
 <details><summary>Gabarito comentado</summary>
 
 1. **A) 30**: 20% = 20/100 = 0,2. Então 0,2 × 150 = 30.
@@ -206,12 +518,146 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **B) 35%**: 14/40 = 0,35 = 35%.
 5. **D) 1% mais barato**: Os 10% incidem sobre valores diferentes: 1,10 × 0,90 = 0,99, ou seja, 99% do preço inicial (1% mais barato).
 6. **C) R$ 3.000**: C × 0,02 × 5 = 300 → C × 0,1 = 300 → C = R$ 3.000.
+7. **B) 42**: 50% é a metade: 84 ÷ 2 = 42.
+8. **B) 35**: 10% = 1/10; 350 ÷ 10 = 35.
+9. **C) R$ 200**: 20% de 250 = 50; 250 − 50 = 200 (ou 250 × 0,8).
+10. **A) 15%**: Aumento de 300. 300 ÷ 2.000 = 0,15 = 15%.
+11. **C) R$ 560**: J = 500 × 0,02 × 6 = 60. Montante = 500 + 60 = R$ 560.
+12. **B) 75%**: 3 ÷ 4 = 0,75 = 75%.
+13. **D) R$ 120**: Preço com desconto = 75% do original: 0,75 × P = 90 → P = 120. (Somar 25% de 90 dá 112,50, que está errado.)
+14. **D) 10 meses**: 1.000 × 0,015 × t = 150 → 15t = 150 → t = 10.
+15. **C) 60**: 0,30 × 200 = 60.
+
+</details>
+
+### Contagem e princípio multiplicativo
+
+**Semana 14 · 2º bimestre**
+
+**Objetivo:** Resolver problemas de contagem com o princípio multiplicativo e a árvore de possibilidades.
+
+**Conceitos-chave:** princípio multiplicativo; com e sem repetição; quando a ordem importa.
+
+**Videoaulas:**
+
+- [8º ano – Matemática – Princípio multiplicativo da contagem](https://www.youtube.com/watch?v=OixEVgAp8N4) — YouTube
+- [Princípio fundamental da contagem – 8º ano](https://www.youtube.com/watch?v=3qrupf2496g) — YouTube
+
+**Questões (15):**
+
+1. Com 3 camisetas e 4 bermudas diferentes, quantas combinações de roupa (1 camiseta + 1 bermuda) são possíveis? _(fácil)_
+   - A) 24
+   - B) 12
+   - C) 3
+   - D) 7
+
+2. Quantas senhas de 3 dígitos (de 0 a 9) existem, se os dígitos podem se repetir? _(média)_
+   - A) 1 000
+   - B) 720
+   - C) 999
+   - D) 30
+
+3. Quantos anagramas tem a palavra AMOR? _(média)_
+   - A) 24
+   - B) 4
+   - C) 16
+   - D) 12
+
+4. Quantas senhas de 3 dígitos distintos (de 0 a 9) existem? _(média)_
+   - A) 30
+   - B) 1 000
+   - C) 720
+   - D) 504
+
+5. Lançando uma moeda e um dado, quantos resultados diferentes são possíveis? _(fácil)_
+   - A) 8
+   - B) 12
+   - C) 6
+   - D) 36
+
+6. Um restaurante oferece 2 entradas, 3 pratos principais e 2 sobremesas. Quantos menus completos diferentes existem? _(média)_
+   - A) 12
+   - B) 24
+   - C) 7
+   - D) 6
+
+7. Quantos números de 2 algarismos distintos podem ser formados com 1, 2, 3 e 4? _(média)_
+   - A) 12
+   - B) 8
+   - C) 24
+   - D) 16
+
+8. Quantos números de 2 algarismos podem ser formados com 1, 2, 3 e 4, podendo repetir? _(média)_
+   - A) 16
+   - B) 6
+   - C) 12
+   - D) 8
+
+9. De quantas maneiras pode ser formado o pódio (1º, 2º e 3º lugares) de uma corrida com 8 atletas? _(desafio)_
+   - A) 512
+   - B) 24
+   - C) 336
+   - D) 56
+
+10. Há 3 estradas de A até B e 2 de B até C. De quantas maneiras se vai de A até C passando por B? _(média)_
+   - A) 8
+   - B) 9
+   - C) 6
+   - D) 5
+
+11. Quantos números ímpares de 3 algarismos distintos podem ser formados com 1, 2, 3, 4 e 5? _(desafio)_
+   - A) 48
+   - B) 60
+   - C) 27
+   - D) 36
+
+12. Quantos números pares de 2 algarismos podem ser formados com 1, 2, 3, 4, 5 e 6, podendo repetir? _(média)_
+   - A) 18
+   - B) 36
+   - C) 12
+   - D) 15
+
+13. Para que serve a árvore de possibilidades? _(fácil)_
+   - A) para resolver equações
+   - B) para medir ângulos
+   - C) para calcular áreas
+   - D) para listar de forma organizada todas as possibilidades
+
+14. Cinco amigos se cumprimentam, cada um apertando a mão de cada outro uma vez. Quantos apertos de mão acontecem? _(desafio)_
+   - A) 5
+   - B) 10
+   - C) 20
+   - D) 25
+
+15. Uma sala tem 4 portas. De quantas maneiras é possível entrar por uma porta e sair por outra diferente? _(média)_
+   - A) 16
+   - B) 12
+   - C) 7
+   - D) 8
+
+<details><summary>Gabarito comentado</summary>
+
+1. **B) 12**: Princípio multiplicativo: 3 × 4 = 12.
+2. **A) 1 000**: 10 opções para cada posição: 10 × 10 × 10 = 1 000 (de 000 a 999).
+3. **A) 24**: 4 letras distintas: 4 × 3 × 2 × 1 = 24.
+4. **C) 720**: 10 opções, depois 9, depois 8: 10 × 9 × 8 = 720.
+5. **B) 12**: 2 resultados da moeda × 6 do dado = 12.
+6. **A) 12**: 2 × 3 × 2 = 12.
+7. **A) 12**: 4 opções para a dezena e 3 para a unidade: 4 × 3 = 12.
+8. **A) 16**: 4 opções em cada posição: 4 × 4 = 16.
+9. **C) 336**: A ordem importa: 8 × 7 × 6 = 336. (56 seria o número de grupos de 3 sem ordem.)
+10. **C) 6**: Para cada estrada de A a B há 2 de B a C: 3 × 2 = 6.
+11. **D) 36**: Comece pela restrição: a unidade é 1, 3 ou 5 (3 opções). Depois sobram 4 para a centena e 3 para a dezena: 3 × 4 × 3 = 36.
+12. **A) 18**: A unidade é 2, 4 ou 6 (3 opções) e a dezena tem 6 opções: 6 × 3 = 18.
+13. **D) para listar de forma organizada todas as possibilidades**: Cada ramo representa uma escolha, e o total de caminhos confirma a multiplicação.
+14. **B) 10**: 5 × 4 = 20 conta cada aperto duas vezes (A com B e B com A). Então 20 ÷ 2 = 10.
+15. **B) 12**: 4 opções para entrar e 3 para sair: 4 × 3 = 12.
 
 </details>
 
 ### Expressões algébricas e produtos notáveis
 
-**Semana 16 · 2º bimestre**
+**Semana 17 · 2º bimestre**
 
 **Objetivo:** Calcular o valor numérico de expressões, simplificar termos semelhantes e usar produtos notáveis e fatoração.
 
@@ -222,7 +668,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Introdução às expressões algébricas](https://www.youtube.com/watch?v=ZONgblxWDlc) — Portal da Matemática OBMEP / IMPA
 - [Produtos notáveis: quadrado da soma](https://www.youtube.com/watch?v=AvNnnTpwLug) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Qual é o valor de 3x + 2y para x = 4 e y = −1? _(fácil)_
    - A) 10
@@ -260,6 +706,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 10 201
    - D) 10 001
 
+7. Qual expressão representa “o dobro de um número mais 5”? _(fácil)_
+   - A) 2(x + 5)
+   - B) x² + 5
+   - C) x + 10
+   - D) 2x + 5
+
+8. Quanto é 3a · 4a? _(fácil)_
+   - A) 12a
+   - B) 12a²
+   - C) 7a²
+   - D) 7a
+
+9. Desenvolvendo (x − 4)², obtemos: _(média)_
+   - A) x² + 16
+   - B) x² − 8x + 16
+   - C) x² − 16
+   - D) x² − 4x + 16
+
+10. Qual é o valor de a² − b² para a = 7 e b = 3? _(média)_
+   - A) 40
+   - B) 4
+   - C) 16
+   - D) 58
+
+11. Qual é a forma fatorada de 5x + 15? _(média)_
+   - A) x(5 + 15)
+   - B) 5x(1 + 3)
+   - C) 15(x + 5)
+   - D) 5(x + 3)
+
+12. O produto (2x + 3)(2x − 3) é igual a: _(média)_
+   - A) 4x² − 9
+   - B) 4x² + 9
+   - C) 2x² − 9
+   - D) 4x² − 12x − 9
+
+13. Um retângulo tem lados x e x + 2. Qual expressão representa o seu perímetro? _(média)_
+   - A) 4x + 4
+   - B) 4x + 2
+   - C) 2x + 2
+   - D) x² + 2x
+
+14. Se a + b = 10 e a · b = 21, quanto vale a² + b²? _(desafio)_
+   - A) 100
+   - B) 79
+   - C) 58
+   - D) 42
+
+15. Usando um produto notável, calcule 998 × 1002. _(desafio)_
+   - A) 1 000 000
+   - B) 999 999
+   - C) 1 000 004
+   - D) 999 996
+
 <details><summary>Gabarito comentado</summary>
 
 1. **A) 10**: 3 · 4 + 2 · (−1) = 12 − 2 = 10.
@@ -268,6 +768,15 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **C) 3x + 5y**: Juntam-se os termos semelhantes: 4x − x = 3x e 3y + 2y = 5y.
 5. **D) (x − 3)²**: É um trinômio quadrado perfeito: x² − 2·x·3 + 3² = (x − 3)².
 6. **C) 10 201**: 101² = (100 + 1)² = 100² + 2·100·1 + 1² = 10 000 + 200 + 1 = 10 201.
+7. **D) 2x + 5**: O dobro de x é 2x; depois soma-se 5. 2(x + 5) seria o dobro da soma.
+8. **B) 12a²**: Multiplicam-se os coeficientes (3 × 4 = 12) e as partes literais (a · a = a²).
+9. **B) x² − 8x + 16**: Quadrado da diferença: a² − 2ab + b² → x² − 8x + 16.
+10. **A) 40**: 49 − 9 = 40. Também: (a + b)(a − b) = 10 × 4 = 40.
+11. **D) 5(x + 3)**: Coloca-se o fator comum 5 em evidência: 5 · x + 5 · 3 = 5(x + 3).
+12. **A) 4x² − 9**: Produto da soma pela diferença: (2x)² − 3² = 4x² − 9.
+13. **A) 4x + 4**: Perímetro = 2 · x + 2 · (x + 2) = 4x + 4. (x² + 2x é a área.)
+14. **C) 58**: (a + b)² = a² + 2ab + b² → 100 = a² + b² + 42 → a² + b² = 58.
+15. **D) 999 996**: (1000 − 2)(1000 + 2) = 1000² − 2² = 1 000 000 − 4 = 999 996.
 
 </details>
 
@@ -285,7 +794,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Sistemas: método da substituição](https://www.youtube.com/watch?v=saNvSoonvSk) — Portal da Matemática OBMEP / IMPA
 - [Sistemas de equações do 1º grau com duas incógnitas – 09](https://www.youtube.com/watch?v=buPEocRj2cg) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Resolva 5x − 7 = 18. _(fácil)_
    - A) x = 25
@@ -323,6 +832,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 7
    - D) 5
 
+7. Resolva x + 9 = 4. _(fácil)_
+   - A) x = −13
+   - B) x = −5
+   - C) x = 13
+   - D) x = 5
+
+8. Resolva x/3 = 7. _(fácil)_
+   - A) x = 7/3
+   - B) x = 10
+   - C) x = 4
+   - D) x = 21
+
+9. Resolva 3(x − 2) = 2x + 5. _(média)_
+   - A) x = −1
+   - B) x = 1
+   - C) x = 3
+   - D) x = 11
+
+10. Pedro tem o triplo da idade de Ana, e juntos somam 48 anos. Qual é a idade de Pedro? _(média)_
+   - A) 16
+   - B) 36
+   - C) 12
+   - D) 24
+
+11. Qual é a solução do sistema x + y = 10 e 2x + y = 14? _(média)_
+   - A) x = 5 e y = 5
+   - B) x = 6 e y = 4
+   - C) x = 7 e y = 3
+   - D) x = 4 e y = 6
+
+12. Quais são as soluções de x² = 49? _(média)_
+   - A) x = 49
+   - B) x = 24,5
+   - C) x = 7 ou x = −7
+   - D) apenas x = 7
+
+13. Quais são as soluções de 2x² = 50? _(média)_
+   - A) x = 10
+   - B) x = 25
+   - C) x = 12,5
+   - D) x = 5 ou x = −5
+
+14. Resolva (x + 1)/2 = (x − 1)/3. _(desafio)_
+   - A) x = −1
+   - B) x = 5
+   - C) x = 1
+   - D) x = −5
+
+15. Ingressos custam R$ 20 (adulto) e R$ 10 (criança). Foram vendidos 30 ingressos, num total de R$ 450. Quantos eram de adulto? _(desafio)_
+   - A) 10
+   - B) 20
+   - C) 15
+   - D) 30
+
 <details><summary>Gabarito comentado</summary>
 
 1. **C) x = 5**: 5x = 18 + 7 = 25, logo x = 25 ÷ 5 = 5.
@@ -331,12 +894,146 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **C) 12**: c + m = 20 e 4c + 2m = 56. Substituindo m = 20 − c: 4c + 40 − 2c = 56 → c = 8. Logo, m = 12.
 5. **B) 25**: n + (n + 1) + (n + 2) = 72 → 3n + 3 = 72 → n = 23. Os números são 23, 24 e 25.
 6. **D) 5**: Da 1ª equação, y = 7 − 2x. Na 2ª: x + 21 − 6x = 11 → x = 2 e y = 3. Logo x + y = 5.
+7. **B) x = −5**: x = 4 − 9 = −5.
+8. **D) x = 21**: Multiplicando os dois lados por 3: x = 21.
+9. **D) x = 11**: 3x − 6 = 2x + 5 → 3x − 2x = 5 + 6 → x = 11.
+10. **B) 36**: Ana = a e Pedro = 3a. a + 3a = 48 → a = 12. Pedro tem 36.
+11. **D) x = 4 e y = 6**: Subtraindo a 1ª equação da 2ª: x = 4. Então y = 10 − 4 = 6.
+12. **C) x = 7 ou x = −7**: Tanto 7² quanto (−7)² dão 49, então há duas soluções.
+13. **D) x = 5 ou x = −5**: x² = 25, então x = 5 ou x = −5.
+14. **D) x = −5**: Multiplicando em cruz: 3(x + 1) = 2(x − 1) → 3x + 3 = 2x − 2 → x = −5.
+15. **C) 15**: a + c = 30 e 20a + 10c = 450. Substituindo c = 30 − a: 20a + 300 − 10a = 450 → a = 15.
+
+</details>
+
+### Grandezas proporcionais
+
+**Semana 24 · 3º bimestre**
+
+**Objetivo:** Identificar grandezas diretamente e inversamente proporcionais e resolver problemas com regra de três, escalas e razões.
+
+**Conceitos-chave:** direta e inversamente proporcionais; regra de três; escala e velocidade média.
+
+**Videoaulas:**
+
+- [Grandezas inversamente proporcionais – 8º ano](https://www.youtube.com/watch?v=Jkc9_CKw3Tg) — YouTube
+- [Regra de três simples: grandezas diretamente proporcionais](https://www.youtube.com/watch?v=goqyLABRxjo) — YouTube
+
+**Questões (15):**
+
+1. Se 3 cadernos custam R$ 24, quanto custam 5 cadernos iguais? _(fácil)_
+   - A) R$ 40
+   - B) R$ 45
+   - C) R$ 32
+   - D) R$ 120
+
+2. Quatro pedreiros constroem um muro em 6 dias. Mantendo o ritmo, em quantos dias 8 pedreiros constroem o mesmo muro? _(média)_
+   - A) 12 dias
+   - B) 2 dias
+   - C) 8 dias
+   - D) 3 dias
+
+3. Qual par de grandezas é diretamente proporcional? _(fácil)_
+   - A) idade e altura de uma pessoa
+   - B) velocidade e tempo de viagem para a mesma distância
+   - C) número de torneiras e tempo para encher um tanque
+   - D) quantidade comprada e valor pago, com preço fixo
+
+4. Um carro a 80 km/h faz uma viagem em 3 horas. Quanto tempo levaria a 120 km/h? _(média)_
+   - A) 2 h
+   - B) 3 h
+   - C) 1,5 h
+   - D) 4,5 h
+
+5. Uma receita usa 2 xícaras de farinha para 12 biscoitos. Quantas xícaras são necessárias para 30 biscoitos? _(média)_
+   - A) 4 xícaras
+   - B) 5 xícaras
+   - C) 10 xícaras
+   - D) 6 xícaras
+
+6. Em um mapa na escala 1:100 000, 3 cm correspondem a quantos quilômetros na realidade? _(média)_
+   - A) 3 000 km
+   - B) 3 km
+   - C) 30 km
+   - D) 300 m
+
+7. Numa turma de 25 estudantes, 15 são meninas. Qual é a razão entre meninas e meninos? _(média)_
+   - A) 3/2
+   - B) 15/25
+   - C) 2/3
+   - D) 3/5
+
+8. Dividindo R$ 600 em partes diretamente proporcionais a 1 e 2, quais são as partes? _(média)_
+   - A) R$ 150 e R$ 450
+   - B) R$ 100 e R$ 500
+   - C) R$ 200 e R$ 400
+   - D) R$ 300 e R$ 300
+
+9. y é diretamente proporcional a x, e y = 12 quando x = 4. Quanto vale y quando x = 10? _(desafio)_
+   - A) 22
+   - B) 18
+   - C) 30
+   - D) 40
+
+10. y é inversamente proporcional a x, e y = 6 quando x = 4. Quanto vale y quando x = 8? _(desafio)_
+   - A) 2
+   - B) 6
+   - C) 12
+   - D) 3
+
+11. Um ônibus percorre 150 km em 2 h 30 min. Qual é a sua velocidade média? _(média)_
+   - A) 50 km/h
+   - B) 60 km/h
+   - C) 75 km/h
+   - D) 65 km/h
+
+12. Com 5 litros de tinta se pintam 40 m². Quantos litros são necessários para pintar 100 m²? _(média)_
+   - A) 10 L
+   - B) 12,5 L
+   - C) 20 L
+   - D) 8 L
+
+13. Na proporção a/b = c/d (com b e d diferentes de zero), vale sempre: _(fácil)_
+   - A) a + d = b + c
+   - B) a · d = b · c
+   - C) a · b = c · d
+   - D) a − b = c − d
+
+14. Seis torneiras iguais enchem um tanque em 10 horas. Em quanto tempo 4 dessas torneiras enchem o mesmo tanque? _(desafio)_
+   - A) 15 h
+   - B) 6,7 h
+   - C) 20 h
+   - D) 12 h
+
+15. Um carro faz 12 km com 1 litro de combustível. Quantos quilômetros ele percorre com 35 litros? _(média)_
+   - A) 47 km
+   - B) 400 km
+   - C) 420 km
+   - D) 360 km
+
+<details><summary>Gabarito comentado</summary>
+
+1. **A) R$ 40**: Cada caderno custa 24 ÷ 3 = R$ 8; 5 × 8 = R$ 40.
+2. **D) 3 dias**: Grandezas inversamente proporcionais: o dobro de pedreiros leva a metade do tempo.
+3. **D) quantidade comprada e valor pago, com preço fixo**: Dobrando a quantidade, o valor dobra. Velocidade e tempo, e torneiras e tempo, são inversamente proporcionais; idade e altura não são proporcionais.
+4. **A) 2 h**: A distância é 80 × 3 = 240 km; 240 ÷ 120 = 2 h.
+5. **B) 5 xícaras**: 2/12 = x/30 → x = 60/12 = 5.
+6. **B) 3 km**: 3 × 100 000 = 300 000 cm = 3 000 m = 3 km.
+7. **A) 3/2**: Há 10 meninos. 15/10 = 3/2. (3/5 é a razão entre meninas e o total.)
+8. **C) R$ 200 e R$ 400**: São 1 + 2 = 3 partes de 600 ÷ 3 = 200: uma parte (200) e duas partes (400).
+9. **C) 30**: A constante é y/x = 12/4 = 3. Então y = 3 × 10 = 30.
+10. **D) 3**: O produto é constante: x · y = 24. Então y = 24 ÷ 8 = 3.
+11. **B) 60 km/h**: 2 h 30 min = 2,5 h; 150 ÷ 2,5 = 60 km/h.
+12. **B) 12,5 L**: Cada litro pinta 8 m²; 100 ÷ 8 = 12,5 L.
+13. **B) a · d = b · c**: Propriedade fundamental das proporções: o produto dos meios é igual ao produto dos extremos.
+14. **A) 15 h**: Inversamente proporcional: 6 × 10 = 4 × t → t = 60 ÷ 4 = 15 h.
+15. **C) 420 km**: 12 × 35 = 420 km.
 
 </details>
 
 ### Geometria: ângulos, polígonos e congruência
 
-**Semana 26 · 3º bimestre**
+**Semana 27 · 3º bimestre**
 
 **Objetivo:** Calcular ângulos internos e diagonais de polígonos e reconhecer os casos de congruência de triângulos.
 
@@ -348,7 +1045,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [Congruência de triângulos](https://www.youtube.com/watch?v=swjxo4xoWq8) — Portal da Matemática OBMEP / IMPA
 - [Congruência de triângulos e aplicações – 01](https://www.youtube.com/watch?v=2LS4h1yu7pc) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Qual é a soma dos ângulos internos de um hexágono? _(fácil)_
    - A) 900°
@@ -386,6 +1083,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 24
    - D) 40
 
+7. Quanto vale a soma dos ângulos internos de um triângulo? _(fácil)_
+   - A) 360°
+   - B) 270°
+   - C) 90°
+   - D) 180°
+
+8. Qual é o complemento de um ângulo de 35°? _(fácil)_
+   - A) 55°
+   - B) 145°
+   - C) 65°
+   - D) 35°
+
+9. Ângulos opostos pelo vértice: _(média)_
+   - A) são sempre retos
+   - B) têm a mesma medida
+   - C) somam 90°
+   - D) são sempre suplementares
+
+10. Quanto vale a soma dos ângulos externos de um polígono convexo? _(média)_
+   - A) 360°
+   - B) depende do número de lados
+   - C) 540°
+   - D) 180°
+
+11. Quanto mede cada ângulo externo de um hexágono regular? _(média)_
+   - A) 72°
+   - B) 120°
+   - C) 30°
+   - D) 60°
+
+12. Duas retas paralelas são cortadas por uma transversal. Os ângulos alternos internos são: _(média)_
+   - A) complementares
+   - B) sempre suplementares
+   - C) congruentes
+   - D) sempre diferentes
+
+13. Qual polígono regular tem ângulos internos de 120°? _(média)_
+   - A) octógono
+   - B) hexágono
+   - C) pentágono
+   - D) quadrado
+
+14. Os ângulos de um triângulo medem x, 2x e 3x. Quanto mede o maior deles? _(desafio)_
+   - A) 60°
+   - B) 30°
+   - C) 90°
+   - D) 120°
+
+15. A mediatriz de um segmento é: _(média)_
+   - A) a reta perpendicular ao segmento que passa pelo seu ponto médio
+   - B) um lado do triângulo
+   - C) o segmento que liga dois vértices
+   - D) a reta que divide um ângulo ao meio
+
 <details><summary>Gabarito comentado</summary>
 
 1. **C) 720°**: Soma = (n − 2) × 180° = (6 − 2) × 180° = 720°.
@@ -394,6 +1145,15 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **D) AAA**: Com três ângulos iguais (AAA), os triângulos têm a mesma forma, mas podem ter tamanhos diferentes: são semelhantes, não necessariamente congruentes.
 5. **B) 70°**: Os ângulos da base são iguais: (180° − 40°) ÷ 2 = 70°.
 6. **B) 20**: d = n(n − 3)/2 = 8 × 5 / 2 = 20.
+7. **D) 180°**: Em qualquer triângulo, os três ângulos internos somam 180°.
+8. **A) 55°**: Ângulos complementares somam 90°: 90° − 35° = 55°. (145° é o suplemento.)
+9. **B) têm a mesma medida**: Quando duas retas se cruzam, os ângulos opostos pelo vértice são congruentes.
+10. **A) 360°**: Para qualquer polígono convexo, a soma dos ângulos externos é 360°.
+11. **D) 60°**: 360° ÷ 6 = 60°. O ângulo interno é 180° − 60° = 120°.
+12. **C) congruentes**: Em retas paralelas, ângulos alternos internos têm a mesma medida.
+13. **B) hexágono**: Ângulo externo = 180° − 120° = 60°; 360° ÷ 60° = 6 lados.
+14. **C) 90°**: x + 2x + 3x = 180° → x = 30°. O maior é 3x = 90°.
+15. **A) a reta perpendicular ao segmento que passa pelo seu ponto médio**: Todo ponto da mediatriz está à mesma distância das extremidades do segmento. A reta que divide o ângulo ao meio é a bissetriz.
 
 </details>
 
@@ -407,9 +1167,11 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 
 **Videoaulas:**
 
+- [Áreas de figuras planas – Brasil Escola](https://www.youtube.com/watch?v=udOTEHMoUNA) — Brasil Escola
+- [8º ano | Matemática – Área de figuras planas: área de polígonos II](https://www.youtube.com/watch?v=hY818nmRjBo) — YouTube
 - [Áreas: exercícios comentados da OBMEP](https://www.youtube.com/watch?v=YiLEGAxggv4) — Portal da Matemática OBMEP / IMPA
 
-**Questões (6):**
+**Questões (15):**
 
 1. Qual é a área de um quadrado de lado 9 cm? _(fácil)_
    - A) 18 cm²
@@ -447,6 +1209,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) não muda
    - D) fica 4 vezes maior
 
+7. Qual é a área de um retângulo de 12 cm por 5 cm? _(fácil)_
+   - A) 60 cm²
+   - B) 34 cm²
+   - C) 120 cm²
+   - D) 17 cm²
+
+8. Qual é a área de um triângulo de base 8 cm e altura 5 cm? _(fácil)_
+   - A) 20 cm²
+   - B) 13 cm²
+   - C) 26 cm²
+   - D) 40 cm²
+
+9. Qual é a área de um paralelogramo de base 9 cm e altura 4 cm? _(média)_
+   - A) 36 cm²
+   - B) 13 cm²
+   - C) 18 cm²
+   - D) 26 cm²
+
+10. Um quadrado tem área de 49 m². Qual é o seu perímetro? _(média)_
+   - A) 14 m
+   - B) 24,5 m
+   - C) 49 m
+   - D) 28 m
+
+11. Quantos centímetros quadrados há em 1 m²? _(média)_
+   - A) 100 000 cm²
+   - B) 1 000 cm²
+   - C) 100 cm²
+   - D) 10 000 cm²
+
+12. Qual é o comprimento de uma circunferência de raio 10 cm? (Use π ≈ 3,14.) _(média)_
+   - A) 314 cm
+   - B) 628 cm
+   - C) 62,8 cm
+   - D) 31,4 cm
+
+13. Qual é a área da coroa circular entre circunferências de raios 5 cm e 3 cm? (Use π ≈ 3,14.) _(desafio)_
+   - A) 78,5 cm²
+   - B) 50,24 cm²
+   - C) 12,56 cm²
+   - D) 25,12 cm²
+
+14. Quantas lajotas quadradas de 50 cm de lado são necessárias para cobrir o piso de uma sala de 4 m por 5 m? _(desafio)_
+   - A) 40
+   - B) 80
+   - C) 400
+   - D) 20
+
+15. Um terreno retangular tem 300 m² de área e 12 m de frente. Qual é a sua profundidade? _(média)_
+   - A) 36 m
+   - B) 15 m
+   - C) 288 m
+   - D) 25 m
+
 <details><summary>Gabarito comentado</summary>
 
 1. **C) 81 cm²**: Área do quadrado = lado × lado = 9 × 9 = 81 cm². (36 cm seria o perímetro.)
@@ -455,12 +1271,146 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **A) 48 cm²**: A = (D × d) / 2 = (12 × 8) / 2 = 48 cm².
 5. **A) R$ 3.600**: Área = 20 × 15 = 300 m². Custo = 300 × 12 = R$ 3.600.
 6. **D) fica 4 vezes maior**: Com lado 2L, a área é (2L)² = 4L²: quatro vezes a área original.
+7. **A) 60 cm²**: A = base × altura = 12 × 5 = 60 cm². (34 cm é o perímetro.)
+8. **A) 20 cm²**: A = base × altura ÷ 2 = 8 × 5 ÷ 2 = 20 cm².
+9. **A) 36 cm²**: Paralelogramo: A = base × altura = 36 cm².
+10. **D) 28 m**: O lado é √49 = 7 m. Perímetro = 4 × 7 = 28 m.
+11. **D) 10 000 cm²**: 1 m = 100 cm, então 1 m² = 100 cm × 100 cm = 10 000 cm².
+12. **C) 62,8 cm**: C = 2πr = 2 × 3,14 × 10 = 62,8 cm. (314 cm² seria a área.)
+13. **B) 50,24 cm²**: Área = π · 5² − π · 3² = π(25 − 9) = 16 × 3,14 = 50,24 cm².
+14. **B) 80**: Área da sala = 20 m². Cada lajota tem 0,5 × 0,5 = 0,25 m². 20 ÷ 0,25 = 80.
+15. **D) 25 m**: Área = frente × profundidade → 300 = 12 × p → p = 25 m.
+
+</details>
+
+### Volume e capacidade
+
+**Semana 34 · 4º bimestre**
+
+**Objetivo:** Calcular volumes de cubos, paralelepípedos, prismas e cilindros e relacionar volume e capacidade.
+
+**Conceitos-chave:** cm³, dm³ e m³; 1 L = 1 dm³; volume do prisma e do cilindro.
+
+**Videoaulas:**
+
+- [8º ano – Medidas de volume e capacidade](https://www.youtube.com/watch?v=DgdDx8DCHrQ) — YouTube
+- [Volume do cilindro – 8º ano](https://www.youtube.com/watch?v=8vnJHOUYsFQ) — YouTube
+
+**Questões (15):**
+
+1. Qual é o volume de um cubo de aresta 3 cm? _(fácil)_
+   - A) 18 cm³
+   - B) 27 cm³
+   - C) 9 cm³
+   - D) 81 cm³
+
+2. Um litro corresponde a: _(fácil)_
+   - A) 10 cm³
+   - B) 1 cm³
+   - C) 1 000 cm³
+   - D) 100 cm³
+
+3. Qual é o volume de um paralelepípedo de 5 cm × 4 cm × 2 cm? _(média)_
+   - A) 11 cm³
+   - B) 40 cm³
+   - C) 80 cm³
+   - D) 22 cm³
+
+4. Uma caixa-d’água cúbica tem 1 m de aresta. Quantos litros ela comporta? _(média)_
+   - A) 100 L
+   - B) 10 000 L
+   - C) 1 000 L
+   - D) 10 L
+
+5. Um aquário mede 50 cm × 30 cm × 40 cm. Qual é a sua capacidade em litros? _(média)_
+   - A) 600 L
+   - B) 120 L
+   - C) 60 L
+   - D) 6 L
+
+6. Qual é o volume de um cilindro de raio 2 cm e altura 10 cm? (Use π ≈ 3,14.) _(média)_
+   - A) 62,8 cm³
+   - B) 40 cm³
+   - C) 125,6 cm³
+   - D) 251,2 cm³
+
+7. Um prisma tem base triangular de área 12 cm² e altura 5 cm. Qual é o seu volume? _(média)_
+   - A) 30 cm³
+   - B) 60 cm³
+   - C) 120 cm³
+   - D) 17 cm³
+
+8. Quantos mililitros há em 2,5 L? _(média)_
+   - A) 25 mL
+   - B) 25 000 mL
+   - C) 2 500 mL
+   - D) 250 mL
+
+9. Se a aresta de um cubo dobra, o que acontece com o volume? _(desafio)_
+   - A) fica 6 vezes maior
+   - B) dobra
+   - C) fica 8 vezes maior
+   - D) fica 4 vezes maior
+
+10. Quantos litros há em 3,5 m³? _(média)_
+   - A) 35 000 L
+   - B) 35 L
+   - C) 350 L
+   - D) 3 500 L
+
+11. Uma piscina tem 10 m de comprimento, 5 m de largura e 1,5 m de profundidade. Quantos litros de água ela comporta? _(desafio)_
+   - A) 750 L
+   - B) 7 500 L
+   - C) 750 000 L
+   - D) 75 000 L
+
+12. Quantos copos de 250 mL podem ser servidos com uma jarra de 2 L? _(média)_
+   - A) 5
+   - B) 8
+   - C) 10
+   - D) 4
+
+13. Qual é o volume de uma lata cilíndrica de raio 5 cm e altura 12 cm? (Use π ≈ 3,14.) _(desafio)_
+   - A) 188,4 cm³
+   - B) 376,8 cm³
+   - C) 9 420 cm³
+   - D) 942 cm³
+
+14. Qual destas é uma unidade de volume? _(fácil)_
+   - A) metro quadrado (m²)
+   - B) metro cúbico (m³)
+   - C) metro (m)
+   - D) quilograma (kg)
+
+15. Com uma caixa de 2 L de leite, quantas porções de 200 mL podem ser servidas? _(média)_
+   - A) 4
+   - B) 10
+   - C) 20
+   - D) 5
+
+<details><summary>Gabarito comentado</summary>
+
+1. **B) 27 cm³**: V = a³ = 3 × 3 × 3 = 27 cm³.
+2. **C) 1 000 cm³**: 1 L = 1 dm³ = 10 cm × 10 cm × 10 cm = 1 000 cm³.
+3. **B) 40 cm³**: V = comprimento × largura × altura = 5 × 4 × 2 = 40 cm³.
+4. **C) 1 000 L**: 1 m³ = 1 000 dm³ = 1 000 L.
+5. **C) 60 L**: 50 × 30 × 40 = 60 000 cm³. Como 1 L = 1 000 cm³, são 60 L.
+6. **C) 125,6 cm³**: V = π r² h = 3,14 × 4 × 10 = 125,6 cm³.
+7. **B) 60 cm³**: Volume do prisma = área da base × altura = 12 × 5 = 60 cm³.
+8. **C) 2 500 mL**: 1 L = 1 000 mL; 2,5 × 1 000 = 2 500 mL.
+9. **C) fica 8 vezes maior**: (2a)³ = 8a³. (A área de cada face fica 4 vezes maior.)
+10. **D) 3 500 L**: 1 m³ = 1 000 L; 3,5 × 1 000 = 3 500 L.
+11. **D) 75 000 L**: V = 10 × 5 × 1,5 = 75 m³ = 75 000 L.
+12. **B) 8**: 2 L = 2 000 mL; 2 000 ÷ 250 = 8.
+13. **D) 942 cm³**: V = 3,14 × 5² × 12 = 3,14 × 300 = 942 cm³ (quase 1 litro). Esquecer de elevar o raio ao quadrado dá 188,4.
+14. **B) metro cúbico (m³)**: m³ mede volume; m², área; m, comprimento; kg, massa.
+15. **B) 10**: 2 000 mL ÷ 200 mL = 10 porções.
 
 </details>
 
 ### Probabilidade e estatística
 
-**Semana 36 · 4º bimestre**
+**Semana 37 · 4º bimestre**
 
 **Objetivo:** Calcular probabilidades simples e interpretar dados usando média, moda e mediana.
 
@@ -471,7 +1421,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 - [8º Ano | Matemática | Aula 97 – Contagem e Probabilidade](https://www.youtube.com/watch?v=yfrXJOSEQJ4) — YouTube
 - [OBMEP – Probabilidade](https://www.youtube.com/watch?v=8xWtYctACh0) — YouTube
 
-**Questões (6):**
+**Questões (15):**
 
 1. Ao lançar um dado comum, qual é a probabilidade de sair um número par? _(fácil)_
    - A) 1/6
@@ -509,6 +1459,60 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
    - C) 7,5
    - D) 10
 
+7. Qual é a probabilidade de sair 5 no lançamento de um dado comum? _(fácil)_
+   - A) 1/2
+   - B) 5/6
+   - C) 1/5
+   - D) 1/6
+
+8. Qual é a probabilidade de sair 7 no lançamento de um dado comum? _(fácil)_
+   - A) 0
+   - B) 1/7
+   - C) 1
+   - D) 1/6
+
+9. Qual é a média de 10, 12, 14 e 20? _(média)_
+   - A) 14
+   - B) 13
+   - C) 15
+   - D) 12
+
+10. Uma urna tem 10 bolas numeradas de 1 a 10. Qual é a probabilidade de sortear um múltiplo de 3? _(média)_
+   - A) 3/7
+   - B) 3/10
+   - C) 1/10
+   - D) 1/3
+
+11. Uma roleta está dividida em 4 partes iguais, e só uma é azul. Qual é a probabilidade, em porcentagem, de parar no azul? _(média)_
+   - A) 40%
+   - B) 75%
+   - C) 25%
+   - D) 4%
+
+12. Qual é a mediana do conjunto 2, 4, 7, 11? _(média)_
+   - A) 7
+   - B) 4
+   - C) 6
+   - D) 5,5
+
+13. Que tipo de gráfico é mais adequado para mostrar as partes de um todo em porcentagem? _(média)_
+   - A) gráfico de setores (pizza)
+   - B) tabela de dupla entrada
+   - C) mapa
+   - D) gráfico de linhas
+
+14. Qual é a amplitude do conjunto 3, 8, 15, 6? _(média)_
+   - A) 8
+   - B) 3
+   - C) 12
+   - D) 15
+
+15. O que é uma pesquisa amostral? _(desafio)_
+   - A) uma pesquisa feita só com amigos
+   - B) uma entrevista com todas as pessoas do país
+   - C) uma pesquisa com dados inventados
+   - D) uma pesquisa com uma parte representativa da população, para tirar conclusões sobre o todo
+
 <details><summary>Gabarito comentado</summary>
 
 1. **B) 1/2**: Há 3 resultados pares (2, 4, 6) entre 6 possíveis: 3/6 = 1/2.
@@ -517,6 +1521,15 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 4. **D) 4**: Em ordem: 1, 3, 4, 6, 8. O termo do meio é 4. (4,4 é a média.)
 5. **D) 1/4**: Resultados possíveis: CC, CK, KC, KK. Só um é “duas caras”: 1/4.
 6. **B) 9**: Soma = 7,5 × 4 = 30. Então 6 + 7 + 8 + x = 30 → x = 9.
+7. **D) 1/6**: Há 1 caso favorável entre 6 possíveis.
+8. **A) 0**: É um evento impossível, porque o dado só tem faces de 1 a 6.
+9. **A) 14**: (10 + 12 + 14 + 20) ÷ 4 = 56 ÷ 4 = 14.
+10. **B) 3/10**: Os múltiplos de 3 são 3, 6 e 9: 3 casos entre 10.
+11. **C) 25%**: 1/4 = 0,25 = 25%.
+12. **D) 5,5**: Com quantidade par de valores, a mediana é a média dos dois centrais: (4 + 7) ÷ 2 = 5,5. (6 é a média do conjunto.)
+13. **A) gráfico de setores (pizza)**: No gráfico de setores, cada fatia é proporcional à parte que representa. O gráfico de linhas mostra variação no tempo.
+14. **C) 12**: Amplitude = maior valor − menor valor = 15 − 3 = 12.
+15. **D) uma pesquisa com uma parte representativa da população, para tirar conclusões sobre o todo**: Pesquisar todos é um censo. Na amostral, a escolha da amostra precisa ser representativa para evitar distorções.
 
 </details>
 
@@ -657,6 +1670,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 **Videoaulas:**
 
 - [Coesão e coerência – Língua Portuguesa – 8º ano](https://www.youtube.com/watch?v=UxC_LkaHzRs) — YouTube
+- [Coesão e coerência textual: aula, exemplos e exercícios](https://www.youtube.com/watch?v=qyGqAtbbEaU) — YouTube
 
 **Questões (6):**
 
@@ -843,6 +1857,7 @@ Gerado a partir dos dados do Painel de Estudos. 266 questões de múltipla escol
 **Videoaulas:**
 
 - [Aula 13 – Pontuação? Pontuação! E seus efeitos de sentido](https://www.youtube.com/watch?v=7hzDytthua4) — YouTube
+- [Língua Portuguesa – Sinais de pontuação – Ensino Fundamental](https://www.youtube.com/watch?v=RhHHJHvcsTI) — YouTube
 
 **Questões (6):**
 

@@ -20,13 +20,13 @@ const tiles:{id:Mode|'tutor'|'ouvir';label:string;icon:React.ReactNode;hint:stri
  {id:'ouvir',label:'Ouvir',icon:<Headphones size={18}/>,hint:'Escute seus resumos'},
 ];
 
-export function PracticeSection({study,go,initialTopic,initialMode}:{study:Study;go:Go;initialTopic?:string;initialMode?:Mode}){
+export function PracticeSection({study,go,initialTopic,initialMode,initialSubject}:{study:Study;go:Go;initialTopic?:string;initialMode?:Mode;initialSubject?:string}){
  const {data}=study;
  const [mode,setMode]=useState<Mode|null>(initialMode??(initialTopic?'quiz':null));
- const [subject,setSubject]=useState(''),[topic,setTopic]=useState(initialTopic||''),[level,setLevel]=useState(0);
+ const [subject,setSubject]=useState(initialSubject||''),[topic,setTopic]=useState(initialTopic||''),[level,setLevel]=useState(0);
  const last=lastAttempts(data.attempts);
  const filtered=data.questions.filter(q=>(!subject||q.subject===subject)&&(!topic||topicFor(q)===topic)&&(!level||q.difficulty===level));
- const wrong=data.questions.filter(q=>{const a=last.get(q.id);return a&&!a.correct});
+ const wrong=data.questions.filter(q=>{const a=last.get(q.id);return a&&!a.correct&&(!subject||q.subject===subject)});
 
  if(!mode)return <div className="stack">
   <header className="page-head"><h1 className="display xl"><span className="dim">Pratique</span> do jeito que funciona pra você.</h1></header>
@@ -58,7 +58,7 @@ export function PracticeSection({study,go,initialTopic,initialMode}:{study:Study
    <button className="back" onClick={()=>setMode(null)}><ArrowLeft size={16}/> Modos de estudo</button>
    <h1 className="display lg">{title[mode]}</h1>
   </header>
-  {(mode==='quiz'||mode==='flashcards'||mode==='simulado')&&<div className="row filters">
+  {(mode==='quiz'||mode==='flashcards'||mode==='simulado'||mode==='revisao')&&<div className="row filters">
    <select className="field" aria-label="Disciplina" value={subject} onChange={e=>{setSubject(e.target.value);setTopic('')}}><option value="">Todas as disciplinas</option>{subjects.map(s=><option key={s}>{s}</option>)}</select>
    <select className="field" aria-label="Nível" value={level} onChange={e=>setLevel(Number(e.target.value))}><option value={0}>Todos os níveis</option>{[1,2,3].map(n=><option key={n} value={n}>{LEVELS[n]}</option>)}</select>
    {topic&&<span className="chip on">{topic} <button aria-label="Remover filtro de tema" onClick={()=>setTopic('')}>×</button></span>}

@@ -1,6 +1,8 @@
 import {and,eq,inArray,sql} from 'drizzle-orm';
 import {getDb} from '../db';
-import {questions,resourceCatalog} from '../db/schema';
+import {plans,questions,resourceCatalog,topics,users} from '../db/schema';
+import {curriculum} from './curriculum';
+import {schoolWeek} from './study-plan.ts';
 import {starterQuestions} from './question-bank';
 import {BANK_SOURCE,bankQuestions} from './bank/index.ts';
 import {resources} from './resources';
@@ -41,4 +43,30 @@ export async function seedQuestions(owner:string){
  const entries=[...mcq,...open].map((q,i)=>({...q,id:crypto.randomUUID(),owner,topicId:null,createdAt:now-i}));
  for(const part of chunks(entries,8))await db.insert(questions).values(part);
  return entries.length;
+}
+
+// Versão do banco de questões: aumente ao incluir questões novas, para instalá-las nas contas existentes
+// (sem reinstalar as que o estudante excluiu dentro da mesma versão).
+export const BANK_VERSION=2;
+
+export async function ensureBank(owner:string){
+ const db=getDb();
+ const row=await db.select({v:users.bankVersion}).from(users).where(eq(users.id,owner)).get();
+ if((row?.v??0)>=BANK_VERSION)return 0;
+ const added=await seedQuestions(owner);
+ await db.update(users).set({bankVersion:BANK_VERSION}).where(eq(users.id,owner));
+ return added;
+}
+
+// Cria a trilha anual de uma disciplina (40 semanas, 4 bimestres), se ainda não existir.
+export async function createTrail(owner:string,subject:string){
+ const list=curriculum[subject];if(!list)return null;
+ const db=getDb(),title=`Trilha de ${subject} · 8º ano`;
+ const previous=await db.select({id:plans.id}).from(plans).where(and(eq(plans.owner,owner),eq(plans.title,title))).get();
+ if(previous)return {planId:previous.id,count:list.length,existed:true};
+ const planId=crypto.randomUUID();
+ await db.insert(plans).values({id:planId,owner,title,examDate:null,target:'Plano anual: 4 bimestres, com aulas e questões por tema',createdAt:Date.now()});
+ const rows=list.map((t,position)=>({id:crypto.randomUUID(),planId,title:t,position,week:schoolWeek(position,list.length)}));
+ for(const part of chunks(rows,15))await db.insert(topics).values(part);
+ return {planId,count:list.length,existed:false};
 }

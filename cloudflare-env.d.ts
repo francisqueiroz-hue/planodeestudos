@@ -5,5 +5,6 @@ declare namespace Cloudflare {
     ANTHROPIC_API_KEY?: string;
     ANTHROPIC_MODEL?: string;
     ANTHROPIC_BASE_URL?: string;
+    ALLOW_SIGNUP?: string;
   }
 }

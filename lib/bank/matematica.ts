@@ -1,6 +1,7 @@
 import type {SubjectBank} from './types.ts';
+import {matematicaExtra} from './matematica-2.ts';
 
-export const matematica:SubjectBank={subject:'Matemática',items:[
+const base:SubjectBank['items']=[
  ['Potenciação e radiciação',1,'Qual é o valor de (−3)⁴?',['−81','81','−12','12'],1,'Expoente par com base negativa dá resultado positivo: (−3)·(−3)·(−3)·(−3) = 81.'],
  ['Potenciação e radiciação',2,'Simplifique 5⁷ ÷ 5⁴.',['5³','5¹¹','1³','5²⁸'],0,'Na divisão de potências de mesma base, conserva-se a base e subtraem-se os expoentes: 7 − 4 = 3.'],
  ['Potenciação e radiciação',1,'Quanto é √144?',['14','12','72','11'],1,'12 × 12 = 144, então a raiz quadrada de 144 é 12.'],
@@ -56,4 +57,6 @@ export const matematica:SubjectBank={subject:'Matemática',items:[
  ['Probabilidade e estatística',2,'Qual é a mediana do conjunto 3, 8, 1, 6, 4?',['6','4','4,4','8'],1,'Em ordem: 1, 3, 4, 6, 8. O termo do meio é 4. (4,4 é a média.)'],
  ['Probabilidade e estatística',2,'Lançando duas moedas, qual é a probabilidade de sair cara nas duas?',['1/2','1/3','1/4','3/4'],2,'Resultados possíveis: CC, CK, KC, KK. Só um é “duas caras”: 1/4.'],
  ['Probabilidade e estatística',3,'As notas 6, 7, 8 e x têm média 7,5. Qual é o valor de x?',['7,5','8','10','9'],3,'Soma = 7,5 × 4 = 30. Então 6 + 7 + 8 + x = 30 → x = 9.'],
-]};
+];
+
+export const matematica:SubjectBank={subject:'Matemática',items:[...base,...matematicaExtra]};

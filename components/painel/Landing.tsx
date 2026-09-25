@@ -9,13 +9,13 @@ const previewTiles=[
  {label:'Chat',icon:<MessageCircle size={16}/>},{label:'Quiz',icon:<ListChecks size={18}/>,big:true},{label:'Revisão',icon:<Repeat size={16}/>},
 ];
 
-export function Landing({onLogin}:{onLogin:(u:User)=>void}){
+export function Landing({onLogin,signupOpen=true}:{onLogin:(u:User)=>void;signupOpen?:boolean}){
  const [kind,setKind]=useState<'oral'|'escrito'>('oral');
  return <div className="landing">
   <section className="hero">
-   <span className="eyebrow">8º ano · Ensino Fundamental</span>
+   <span className="eyebrow">8º ano · Foco em Matemática</span>
    <h1 className="display hero-title"><span className="dim">Estude com método.</span> Chegue na prova com segurança.</h1>
-   <p className="lead">Plano semanal, prática com correção na hora, tutor com IA e acompanhamento do seu progresso, tudo num lugar só.</p>
+   <p className="lead">Mais de 180 questões de Matemática com gabarito comentado, treino rápido sem fim, plano anual e videoaulas por tema, além das outras disciplinas do 8º ano.</p>
    <a className="btn big" href="#entrar">Começar agora</a>
   </section>
 
@@ -68,14 +68,14 @@ export function Landing({onLogin}:{onLogin:(u:User)=>void}){
    </section>
   </div>
 
-  <AuthCard onLogin={onLogin}/>
+  <AuthCard key={String(signupOpen)} onLogin={onLogin} signupOpen={signupOpen}/>
 
   <p className="note center fine">Também dá para ouvir seus resumos <Headphones size={13}/> e revisar só o que você errou.</p>
  </div>;
 }
 
-function AuthCard({onLogin}:{onLogin:(u:User)=>void}){
- const [mode,setMode]=useState<'register'|'login'>('register');
+function AuthCard({onLogin,signupOpen}:{onLogin:(u:User)=>void;signupOpen:boolean}){
+ const [mode,setMode]=useState<'register'|'login'>(signupOpen?'register':'login');
  const [error,setError]=useState(''),[busy,setBusy]=useState(false);
  async function submit(e:React.FormEvent<HTMLFormElement>){
   e.preventDefault();setBusy(true);setError('');
@@ -89,7 +89,7 @@ function AuthCard({onLogin}:{onLogin:(u:User)=>void}){
  return <section className="card auth" id="entrar">
   <h2 className="display">{mode==='register'?<>Crie sua conta <span className="dim">e comece hoje.</span></>:<>Bem-vindo de volta. <span className="dim">Vamos continuar?</span></>}</h2>
   <Spark/>
-  <Segmented label="Entrar ou criar conta" value={mode} onChange={m=>{setMode(m);setError('')}} options={[{value:'register',label:'Criar conta'},{value:'login',label:'Entrar'}]}/>
+  {signupOpen?<Segmented label="Entrar ou criar conta" value={mode} onChange={m=>{setMode(m);setError('')}} options={[{value:'register',label:'Criar conta'},{value:'login',label:'Entrar'}]}/>:<p className="note">Plataforma de uso pessoal: entre com a sua conta.</p>}
   <form className="form" onSubmit={submit}>
    {mode==='register'&&<input className="field" name="name" placeholder="Seu nome" aria-label="Nome" autoComplete="name" required maxLength={80}/>}
    <input className="field" name="email" type="email" placeholder="E-mail" aria-label="E-mail" autoComplete="email" required/>

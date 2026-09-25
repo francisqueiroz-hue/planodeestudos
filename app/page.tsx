@@ -7,8 +7,8 @@ import {Dashboard} from '../components/painel/Dashboard';
 
 export default function Home(){
  const [user,setUser]=useState<User|null>(null);
- const [checking,setChecking]=useState(true);
- useEffect(()=>{fetch('/api/auth').then(readJSON).then(x=>setUser((x.user as User)||null)).catch(()=>setUser(null)).finally(()=>setChecking(false))},[]);
+ const [checking,setChecking]=useState(true),[signupOpen,setSignupOpen]=useState(true);
+ useEffect(()=>{fetch('/api/auth').then(readJSON).then(x=>{setUser((x.user as User)||null);setSignupOpen(x.signupOpen!==false)}).catch(()=>setUser(null)).finally(()=>setChecking(false))},[]);
  const expire=useCallback(()=>setUser(null),[]);
  async function logout(){await fetch('/api/auth',{method:'POST',headers:json,body:JSON.stringify({op:'logout'})}).catch(()=>{});setUser(null)}
  return <>
@@ -19,7 +19,7 @@ export default function Home(){
     :!checking&&<a className="btn sm secondary" href="#entrar">Entrar</a>}
   </div></header>
   <main className="wrap">
-   {checking?<p className="note center" style={{padding:'80px 0'}} role="status">Carregando…</p>:user?<Dashboard key={user.id} name={user.name} onExpired={expire}/>:<Landing onLogin={setUser}/>}
+   {checking?<p className="note center" style={{padding:'80px 0'}} role="status">Carregando…</p>:user?<Dashboard key={user.id} name={user.name} onExpired={expire}/>:<Landing onLogin={setUser} signupOpen={signupOpen}/>}
   </main>
   <footer className="footer">Painel de Estudos · 8º ano · <a href="https://basenacionalcomum.mec.gov.br/" target="_blank" rel="noreferrer">Referência curricular: BNCC</a></footer>
  </>;
