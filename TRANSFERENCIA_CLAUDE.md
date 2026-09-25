@@ -1,4 +1,22 @@
-# Painel de Estudos — transferência para Claude Cowork
+# Painel de Estudos — transferência para Claude
+
+## Status: finalizado (setembro de 2026)
+
+O código foi adaptado para funcionar fora da hospedagem "Sites" do ChatGPT. As instruções de instalação e publicação atuais estão no `README.md`.
+
+| Antes (exportação Sites) | Agora |
+|---|---|
+| Login pelo ChatGPT (cabeçalhos `oai-authenticated-*`) | Cadastro e login próprios (`app/api/auth`, `lib/auth.ts`, migração `0003_auth.sql`) |
+| OpenAI `gpt-4.1-mini` (Responses API) | API Claude, modelo `claude-opus-5` configurável (`lib/ai.ts`) |
+| Voz pela OpenAI (`/api/audio`) | Ditado e leitura em voz alta pelo navegador (Web Speech API) |
+| Plugin/scripts do Sites, `.openai/hosting.json` | `wrangler.jsonc` padrão da Cloudflare, scripts `deploy` e `db:migrate:*` |
+| Inserções em lote acima do limite do D1 (100 parâmetros) | Inserções divididas em lotes (`lib/bootstrap.ts`) |
+
+Outras correções: correção literal igual no cliente e no servidor; temas de planos com data distribuídos por semana; confirmação antes de excluir; botão para limpar a conversa; % de acertos; modo "Simulado escrito" removido, porque era idêntico ao Quiz; testes unitários em `tests/`.
+
+---
+
+## Registro original da exportação
 
 Este pacote contém o código-fonte completo da versão 4 salva do site. A versão 4 ainda não foi publicada; a versão ao vivo é anterior. O pacote não contém o banco de dados de produção, arquivos enviados pelos usuários, dependências instaladas ou chaves de API.
 

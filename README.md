@@ -1,126 +1,86 @@
-# vinext-starter
+# Painel de Estudos · 8º ano
 
-A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
+Aplicação web para organizar os estudos do 8º ano do Ensino Fundamental: plano por temas, banco de questões com gabarito, tutor com IA (Claude), leitura de PDFs e fotos, e controle do tempo de estudo.
 
-## Prerequisites
+Roda na Cloudflare (Workers + banco D1 + armazenamento R2), com [vinext](https://github.com/cloudflare/vinext) (Next.js App Router sobre Vite).
 
-- Node.js `>=22.13.0`
-- Portable: Windows, macOS, or Linux; no Bash required
-- Managed Linux: managed Linux runtime with Bash, `flock`, `curl`, `sha256sum`, and GNU `timeout`
-- Git is required only for publishing
+## Funcionalidades
 
-## Sites Lifecycle
+| Área | O que faz |
+|---|---|
+| **Conta** | Cadastro e login com e-mail e senha. Cada estudante vê só os próprios dados. |
+| **Visão geral** | Materiais, temas revisados, % de acertos, cronômetro de estudo e gráfico dos últimos 7 dias. |
+| **Materiais** | Upload de PDF, PNG, JPG ou TXT (até 15 MB) e anotações. Com IA, o arquivo (até 8 MB) é transcrito e organizado por tópicos. |
+| **Plano de estudos** | Trilhas guiadas por disciplina (currículo do 8º ano) ou plano próprio. Com data da prova, os temas são distribuídos em semanas. Links para videoaulas públicas (OBMEP/IMPA, Khan Academy, Canal Futura). |
+| **Questões** | 46 questões autorais com gabarito e explicação, questões manuais, geração de 5 questões por tema com IA, modos Quiz e Flashcards. Correção por significado com IA; sem IA, correção literal (ignora acentos e maiúsculas). |
+| **Tutor de IA** | Chat passo a passo, que pode usar um material já lido como contexto. Ditado por voz e leitura em voz alta pelo próprio navegador (sem custo). |
 
-The Sites initializer copies the shared starter and selects managed-linux only when `SITES_MANAGED_LINUX_CONTAINER=1`; otherwise it selects portable. It saves the selection only in ignored `.sites-runtime/execution-profile.json`. Both profiles copy/configure first, then use the plugin's separate `install-dependencies.mjs` step to measure installation independently. Edit source under `app/` and follow the Sites skill for installation, preview, builds, and publishing.
+Sem chave de IA, o app funciona normalmente e apenas desativa tutor, leitura de arquivos, geração e correção por significado.
 
-Run `node <plugin-root>/scripts/configure-execution-profile.mjs` only when the profile is unknown for the current checkout and environment. Profile changes do not alter tracked source or require reinstalling otherwise-valid dependencies; restart an existing preview to use the new selection. Do not commit or upload `.sites-runtime/`.
+## Estrutura
 
-This starter does not use `wrangler.jsonc`.
-
-`install:ci` runs `npm ci` once against the shared lockfile, disables parent-workspace discovery, and includes required dev/optional dependencies despite production/omit settings. Sharp defaults to prebuilt binaries unless explicitly configured otherwise. Do not overlap installers.
-
-- **Portable:** Preserve host HOME, npm cache, registry, proxy, temporary paths, retry/concurrency settings, and lifecycle-script policy. Use `--prefer-offline --no-audit --no-fund`.
-- **Managed Linux:** Use the existing project-local HOME/cache/tmp setup and Linux install lock, tarball preflight, and timeout. Restore the image-seeded npm cache only when its lockfile hash matches; retain network fallback. Builds keep their existing timeout. These helpers are not invoked by the portable profile.
-
-`scripts/sites-env.mjs` preserves the caller's HOME, npm cache, proxy, XDG, and temporary-directory configuration while defaulting Wrangler and Miniflare state to the checkout. If npm reports an unwritable cache, select a writable path with `npm_config_cache` for that install. The `dev` and `start` scripts also keep Wrangler logs inside the checkout. Generated `.sites-runtime/` and `.wrangler/` directories are disposable and ignored by Git.
-
-On portable, `npm run dev` uses `vinext dev` with HMR, starting at port 5173. Vinext records the running server in ignored `.vinext/` state, rejects an ordinary duplicate launch, and recovers stale state after a stopped process; exactly simultaneous starts can race. Pass `--port <port>` or `--hostname <host>` after `npm run dev --` when needed; keep portable previews on loopback.
-
-For browser QA on managed Linux, use `sites-preview start`. The project's dev script runs Vite and accepts the supervisor's `--host 0.0.0.0 --port 4173 --strictPort` arguments. The internal browser uses `http://terminal.local:4173/`; it is not a user-facing URL. The supervisor owns the preview lifecycle. The ignored local profile survives the supervisor's cleared process environment.
-
-The portable profile simulates ChatGPT sign-in only for loopback development requests. Visit `/signin-with-chatgpt?return_to=/` to sign in as `local_seedy` (`seedy@sites.test`, display name `Seedy`) and `/signout-with-chatgpt?return_to=/` to sign out. The development cookie preserves that identity across server restarts. Mock auth is disabled in the managed-linux profile and is not included in production builds; hosted authentication remains dispatch-owned.
-
-The Worker uses `vinext/server/fetch-handler`, including Vinext's config-aware image handling. After building, `npm start` runs that Worker locally through Wrangler on `127.0.0.1`, sharing `.wrangler/state` with dev preview and local D1 migrations; it does not deploy the site or simulate sign-in. Use the URL printed by the server. Pass `npm start -- --port <port>` to select a different built-preview port.
-
-Local previews use Miniflare's placeholder `Request.cf` metadata without a network lookup. Set `CLOUDFLARE_CF_FETCH_ENABLED=true` to opt into fetching preview metadata; this setting does not change hosted request metadata.
-
-Local tool usage metrics are disabled by default. Set `WRANGLER_SEND_METRICS=true` to opt in.
-
-## Included Shape
-
-- edit site code under `app/`
-- `app/chatgpt-auth.ts` provides optional dispatch-owned ChatGPT sign-in helpers
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
-- `db/schema.ts` starts intentionally empty
-- `@cloudflare/workers-types` provides Worker types; `cloudflare-env.d.ts` declares optional `DB`/`BUCKET` bindings—update these declarations if binding names change
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Use it as the durable user key; use email and name for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive `oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty `name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by `oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```
+app/page.tsx              interface (login + painel)
+app/api/auth              cadastro, login, logout, usuário atual
+app/api/study             materiais, planos, temas, questões, tentativas
+app/api/ai                tutor, leitura, geração, correção, sessões de estudo
+app/api/file              upload e download (R2)
+lib/ai.ts                 integração com a API Claude (Anthropic)
+lib/auth.ts, password.ts  sessões e hash de senha (PBKDF2-SHA256)
+lib/curriculum.ts         temas por disciplina
+lib/question-bank.ts      banco inicial de questões
+lib/resources.ts          catálogo de links externos
+db/schema.ts, drizzle/    esquema e migrações do banco D1
+tests/                    testes unitários
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Rodar localmente
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use the returned `userId` as the stable user key for user-owned records; do not use email as a durable identifier.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send anonymous visitors through Sign in with ChatGPT.
-- In a Server Component, start sign-in with `<a href={chatGPTSignInPath(returnTo)} target="_top">`. The auth helper module is server-only; do not import it into a Client Component.
-- Do not use `fetch`, XHR, a client-side router, or a framework link that can prefetch the sign-in route. SIWC must start as a top-level navigation.
-- Never request the AuthAPI authorization endpoint directly. The dispatch-owned `/signin-with-chatgpt` route must start the SIWC flow.
-- Use `chatGPTSignOutPath(returnTo)` for browser sign-out links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the OAuth cookies, and identity header injection. Do not implement app routes for those reserved paths. Routes that do not import and call the helper remain anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the Sites hosting platform's access policy controls for workspace-wide restrictions, or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Local D1 migrations
-
-For a D1-backed local preview, generate SQL with `npm run db:generate`. Build once through the Sites skill's build entrypoint (or `npm run build` for standalone use) to generate `dist/server/wrangler.json`, rebuilding if bindings change. From the project root, apply each pending migration in order:
+Requisitos: Node.js 22.13+ e pnpm (`corepack enable`).
 
 ```sh
-node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_example.sql
+pnpm install
+cp .dev.vars.example .dev.vars   # opcional: coloque sua ANTHROPIC_API_KEY
+pnpm build                       # gera dist/ (necessário uma vez)
+pnpm db:migrate:local            # cria as tabelas no banco local
+pnpm dev                         # http://localhost:5173
 ```
 
-Replace the filename with the pending migration and `DB` with your D1 binding name if different. Use `.wrangler/state`, not `.wrangler/state/v3`; Wrangler adds the versioned directories. Do not replay migrations already applied locally. This updates only the preview database; publishing applies production migrations separately.
+Crie uma conta na tela inicial. Os dados locais ficam em `.wrangler/state` (ignorado pelo Git).
 
-## Diagnostic Commands
+Verificações: `pnpm typecheck`, `pnpm lint`, `pnpm test`.
 
-- `npm run install:ci`: perform the one locked dependency install
-- `npm run dev`: start the Vite/Vinext development server
-- `npm run build`: build the deployable Sites artifact
-- `npm run start`: preview the built Worker locally with D1/R2 support
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+## Publicar na Cloudflare
 
-When using the Sites plugin, follow its skill instructions for installation, builds, and publishing. These npm commands remain available for standalone use.
+1. Entre na conta: `npx wrangler login`.
+2. Crie o banco e o bucket:
+   ```sh
+   npx wrangler d1 create painel-de-estudos
+   npx wrangler r2 bucket create painel-de-estudos-arquivos
+   ```
+3. Copie o `database_id` exibido para `wrangler.jsonc`, no lugar de `00000000-0000-4000-8000-000000000000`.
+4. Crie as tabelas no banco de produção: `pnpm db:migrate:remote`.
+5. Cadastre a chave da IA como segredo (nunca no código): `npx wrangler secret put ANTHROPIC_API_KEY`.
+6. Publique: `pnpm run deploy`. O endereço final aparece no terminal (`https://painel-de-estudos.<sua-conta>.workers.dev`).
 
-The portable build runs Vinext directly without a host `timeout` command. The managed-linux build uses `scripts/build-verified.sh` and its existing `SITES_BUILD_TIMEOUT` setting.
+Depois de mudar `db/schema.ts`: `pnpm db:generate` e aplique com `db:migrate:local` / `db:migrate:remote`.
 
-## Learn More
+### Variáveis
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+| Nome | Obrigatória | Uso |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | para a IA | Chave da API Claude ([console.anthropic.com](https://console.anthropic.com/)). Segredo. |
+| `ANTHROPIC_MODEL` | não | Modelo Claude. Padrão: `claude-opus-5`. |
+| `ANTHROPIC_BASE_URL` | não | URL do [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) para registro, cache e limites de gasto. |
+
+## Custos e cuidados
+
+- **IA:** cada pergunta, leitura, geração ou correção é cobrada por tokens pela Anthropic. O padrão, `claude-opus-5`, é o modelo de melhor qualidade (US$ 5 / US$ 25 por milhão de tokens de entrada/saída). Para gastar menos, use `ANTHROPIC_MODEL=claude-sonnet-5` (US$ 2 / US$ 10) ou `claude-haiku-4-5` (US$ 1 / US$ 5). Teste a qualidade das correções antes de trocar. Defina um limite de gasto no console da Anthropic ou no AI Gateway.
+- **Cloudflare:** o uso de uma turma cabe, em geral, nos planos gratuitos de Workers, D1 e R2. Confira os limites atuais na Cloudflare.
+- **Dados de menores (LGPD, art. 14):** o app guarda nome, e-mail, anotações, arquivos e respostas. O tratamento de dados de crianças e adolescentes deve ser feito no melhor interesse deles, com consentimento de um responsável quando exigido. Antes de abrir para uma escola, publique uma política de privacidade e defina quem administra os dados. Os textos enviados ao tutor e os arquivos lidos são processados pela Anthropic.
+- **Segurança:** senhas com PBKDF2-SHA256 (100 mil iterações) e sal aleatório; sessão em cookie `HttpOnly`/`SameSite=Lax` (e `Secure` em HTTPS), com só o hash do token salvo no banco; bloqueio de 15 minutos após 8 senhas erradas; cada consulta filtra pelo dono dos dados. Ainda não há recuperação de senha por e-mail.
+- **Conteúdo de terceiros:** o app só aponta para questões e vídeos externos, sem copiá-los. Confira a licença antes de incorporar material protegido.
+
+## Origem
+
+Projeto exportado da versão 4 do "Sites" (ChatGPT) e adaptado para funcionar sozinho: login próprio no lugar do login do ChatGPT, API Claude no lugar da OpenAI, voz pelo navegador e configuração de deploy padrão da Cloudflare. Veja `TRANSFERENCIA_CLAUDE.md`.

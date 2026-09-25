@@ -44,3 +44,9 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# segredos locais do Wrangler
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+*.tsbuildinfo
