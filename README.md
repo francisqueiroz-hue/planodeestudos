@@ -8,19 +8,22 @@ Roda na Cloudflare (Workers + banco D1 + armazenamento R2), com [vinext](https:/
 
 | Área | O que faz |
 |---|---|
-| **Conta** | Cadastro e login com e-mail e senha. Cada estudante vê só os próprios dados. |
-| **Visão geral** | Materiais, temas revisados, % de acertos, cronômetro de estudo e gráfico dos últimos 7 dias. |
-| **Materiais** | Upload de PDF, PNG, JPG ou TXT (até 15 MB) e anotações. Com IA, o arquivo (até 8 MB) é transcrito e organizado por tópicos. |
-| **Plano de estudos** | Trilhas guiadas por disciplina (currículo do 8º ano) ou plano próprio. Com data da prova, os temas são distribuídos em semanas. Links para videoaulas públicas (OBMEP/IMPA, Khan Academy, Canal Futura). |
-| **Questões** | 46 questões autorais com gabarito e explicação, questões manuais, geração de 5 questões por tema com IA, modos Quiz e Flashcards. Correção por significado com IA; sem IA, correção literal (ignora acentos e maiúsculas). |
-| **Tutor de IA** | Chat passo a passo, que pode usar um material já lido como contexto. Ditado por voz e leitura em voz alta pelo próprio navegador (sem custo). |
+| **Página inicial** | Apresentação em cartões (prática, simulado, tutor, foto, plano e progresso) e cadastro/login. |
+| **Início** | Minutos na semana, dias seguidos, % de acertos, temas concluídos, cronômetro (continua contando ao trocar de seção), gráfico de 7 dias, próximos temas e desempenho por disciplina. |
+| **Plano** | Trilha guiada por disciplina ou plano próprio com data da prova; temas agrupados por semana, com aulas externas e atalho para praticar. |
+| **Praticar** | Modos Quiz, Flashcards (cartão que vira, atalhos de teclado), Revisão (só o que você errou), Simulado oral ou escrito (uma pergunta por vez, cronômetro e nota final) e Exercícios (gerar com IA ou criar à mão). Resposta por texto ou voz. |
+| **Tutor** | Chat passo a passo com esfera animada (ouvindo/pensando/falando), ditado, leitura em voz alta, foto do exercício pela câmera e material de apoio. |
+| **Materiais** | Upload de PDF, PNG, JPG ou TXT (até 15 MB), leitura com IA (até 8 MB), anotações e opção de ouvir o conteúdo. |
+
+Voz (ditado e leitura) usa a Web Speech API do navegador: sem custo e sem enviar áudio ao servidor. Funciona melhor no Chrome, Edge e Safari; sem suporte, o simulado oral vira escrito.
 
 Sem chave de IA, o app funciona normalmente e apenas desativa tutor, leitura de arquivos, geração e correção por significado.
 
 ## Estrutura
 
 ```
-app/page.tsx              interface (login + painel)
+app/page.tsx              cabeçalho e troca entre página pública e painel
+components/painel/        seções do painel, página pública, voz e estado (useStudy)
 app/api/auth              cadastro, login, logout, usuário atual
 app/api/study             materiais, planos, temas, questões, tentativas
 app/api/ai                tutor, leitura, geração, correção, sessões de estudo

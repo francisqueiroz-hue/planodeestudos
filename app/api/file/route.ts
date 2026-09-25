@@ -19,6 +19,6 @@ export async function POST(r:Request){
   try{await getDb().insert(materials).values({id,owner,title,kind:KINDS.includes(kind)?kind:'PDF',content:'',objectKey:key,createdAt:Date.now()})}catch(e){await env.BUCKET!.delete(key);throw e}
   let processed=false,readError='';
   if(aiReady()&&file.size<=MAX_AI_BYTES){try{await readMaterial({id,title,objectKey:key});processed=true}catch(e){console.error('automatic reading failed',e);readError=e instanceof Error?e.message:''}}
-  return Response.json({ok:true,processed,readError});
+  return Response.json({ok:true,id,processed,readError});
  }catch(e){console.error('file upload',e);return Response.json({error:'Falha ao enviar o arquivo.'},{status:503})}
 }
