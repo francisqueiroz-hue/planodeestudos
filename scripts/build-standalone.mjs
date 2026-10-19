@@ -2,7 +2,8 @@
 //  - standalone/painel-de-estudos.html: página única (publicada como artifact no claude.ai);
 //  - standalone/app/: aplicativo instalável (PWA) para hospedar em qualquer site estático
 //    (Netlify Drop, Cloudflare Pages, GitHub Pages) e instalar no computador e no celular;
-//  - standalone/painel-de-estudos-app.zip: a pasta app/ compactada, pronta para enviar.
+//  - standalone/painel-de-estudos-app.zip: a pasta app/ compactada, pronta para enviar;
+//  - docs/: a mesma pasta app/, publicada pelo GitHub Pages (abre no iPhone pelo Safari).
 // Uso: npm run build:standalone
 import {build} from 'esbuild';
 import {createHash} from 'node:crypto';
@@ -63,6 +64,10 @@ writeFileSync('standalone/app/index.html',pwa);
 writeFileSync('standalone/app/manifest.webmanifest',JSON.stringify(manifest,null,2));
 writeFileSync('standalone/app/sw.js',sw);
 for(const f of ['icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png'])copyFileSync(`standalone/icons/${f}`,`standalone/app/${f}`);
+// Cópia publicada pelo GitHub Pages (ramo do projeto, pasta /docs): https://<usuário>.github.io/<repositório>/
+const appFiles=['index.html','manifest.webmanifest','sw.js','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png'];
+for(const f of appFiles)copyFileSync(`standalone/app/${f}`,`docs/${f}`);
+writeFileSync('docs/.nojekyll','');
 rmSync('standalone/painel-de-estudos-app.zip',{force:true});
 try{execFileSync('python3',['-c',"import shutil;shutil.make_archive('standalone/painel-de-estudos-app','zip','standalone/app')"])}catch{console.warn('Não foi possível gerar o .zip (python3 ausente); use a pasta standalone/app.')}
 console.log(`standalone/painel-de-estudos.html: ${(page.length/1024).toFixed(0)} KB · standalone/app/ (versão ${version})`);

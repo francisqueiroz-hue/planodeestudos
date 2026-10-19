@@ -4,7 +4,13 @@ O app é um **aplicativo web instalável** (PWA): ele ganha ícone na tela inici
 
 Você publica uma única vez (grátis) e envia o link para o estudante. Quem instala é o estudante, no aparelho dele.
 
-## Parte 1: publicar (quem cuida do app faz uma vez, no próprio computador)
+## Link pronto (já publicado)
+
+**<https://francisqueiroz-hue.github.io/planodeestudos/>**
+
+O app já está publicado pelo GitHub Pages, a partir da pasta `docs/` deste repositório. Basta enviar esse link e seguir a Parte 2. Para atualizar, rode `npm run build:standalone` e envie (push) as mudanças da pasta `docs/`.
+
+## Parte 1: publicar em outro endereço (opcional)
 
 Arquivo a usar: **`painel-de-estudos-app.zip`** (na pasta `standalone/` do repositório, ou o arquivo enviado na conversa).
 
@@ -29,9 +35,12 @@ Arquivo a usar: **`painel-de-estudos-app.zip`** (na pasta `standalone/` do repos
 3. O ícone **Estudos** (Σ) aparece na tela inicial.
 
 ### iPhone ou iPad (Safari)
-1. Abra o link no **Safari** (precisa ser o Safari).
-2. Toque no botão **Compartilhar** (quadrado com seta para cima).
-3. Toque em **Adicionar à Tela de Início** e depois em **Adicionar**.
+1. Abra o link no **Safari**. O app mostra um quadro com estes mesmos passos.
+2. Toque no botão **Compartilhar** (quadrado com seta para cima; no iOS 26 ele fica no menu **⋯**).
+3. Role, toque em **Adicionar à Tela de Início** e depois em **Adicionar** (deixe **Abrir como app** ligado, se aparecer).
+4. Use sempre pelo ícone **Estudos**: ele abre em tela cheia e funciona sem internet.
+
+> No iPhone, o app da Tela de Início e o site aberto no Safari guardam o progresso **separadamente**. Se já respondeu questões no Safari, leve o progresso para o app pelo código (Parte 3).
 
 ### Computador (Chrome ou Edge; Windows, Mac ou Chromebook)
 1. Abra o link no **Chrome** ou no **Edge**.

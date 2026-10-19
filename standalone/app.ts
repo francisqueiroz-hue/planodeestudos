@@ -292,17 +292,36 @@ function backupPanel(){
  const msg=h('p',{class:'dim',role:'status'});
  return h('details',{class:'card backup'},h('summary',{},'Levar o progresso para outro aparelho'),
   h('p',{class:'dim'},'O progresso fica salvo em cada aparelho. Para juntar: gere o código aqui, envie para você mesmo (WhatsApp ou e-mail) e cole no outro aparelho.'),
-  h('div',{class:'row'},h('button',{class:'secondary small',onclick:async()=>{out.value=toCode(P);out.hidden=false;try{await navigator.clipboard.writeText(out.value);msg.textContent='Código copiado. Cole no outro aparelho em “Restaurar”.'}catch{out.select();msg.textContent='Selecione e copie o código acima.'}}},'Gerar e copiar código')),
+  h('div',{class:'row'},h('button',{class:'secondary small',onclick:async()=>{out.value=toCode(P);out.hidden=false;try{await navigator.clipboard.writeText(out.value);msg.textContent='Código copiado. Cole no outro aparelho em “Restaurar”.'}catch{out.select();msg.textContent='Selecione e copie o código acima.'}}},'Gerar e copiar código'),
+   typeof navigator.share==='function'?h('button',{class:'ghost small',onclick:async()=>{out.value=toCode(P);out.hidden=false;try{await navigator.share({title:'Progresso · Painel de Estudos',text:out.value});msg.textContent='Código enviado. Cole no outro aparelho em “Restaurar”.'}catch{/* envio cancelado */}}},'Enviar código'):null),
   out,inp,
   h('div',{class:'row'},h('button',{class:'primary small',onclick:()=>{const p=fromCode(inp.value);if(!p){msg.textContent='Código inválido. Confira se copiou o código inteiro.';return}P=merge(P,p);persist();inp.value='';msg.textContent='Progresso juntado com sucesso.';render()}},'Restaurar / juntar progresso')),msg);
 }
+
+// ---------- iPhone e iPad: instalar na Tela de Início ----------
+// O Safari não mostra botão de instalar; o app explica o caminho (Compartilhar → Adicionar à Tela de Início).
+const IOS_TIP='painel-ios-dica-fechada';
+function isIOS(){return /iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)}
+function isInstalled(){return (navigator as Navigator&{standalone?:boolean}).standalone===true||matchMedia('(display-mode: standalone)').matches}
+function topLevel(){try{return window.self===window.top}catch{return false}}
+function iosInstallTip(){
+ let closed=false;try{closed=localStorage.getItem(IOS_TIP)==='1'}catch{/* sem armazenamento local */}
+ if(closed||!isIOS()||isInstalled()||!topLevel()||!/^https?:$/.test(location.protocol))return '';
+ const close=()=>{try{localStorage.setItem(IOS_TIP,'1')}catch{/* ignora */}render()};
+ return h('section',{class:'card ios-tip','aria-label':'Instalar no iPhone'},
+  h('b',{},'Instale no iPhone para usar como aplicativo'),
+  h('ol',{},h('li',{},'Toque em Compartilhar (o quadrado com a seta para cima). No iOS 26, ele fica no menu ⋯ do Safari.'),h('li',{},'Role e toque em “Adicionar à Tela de Início” (deixe “Abrir como app” ligado).'),h('li',{},'Toque em “Adicionar”. Depois abra pelo ícone “Estudos”: funciona sem internet.')),
+  h('div',{class:'row'},h('button',{class:'ghost small',onclick:close},'Entendi')));
+}
+// Pede ao navegador para não apagar o progresso guardado no aparelho (o Safari pode limpar dados de sites pouco usados).
+if(isInstalled())navigator.storage?.persist?.().catch(()=>{});
 
 // ---------- Renderização ----------
 function render(){
  const app=$('#app');
  const views:Record<View,()=>HTMLElement>={mat:viewMat,treino:viewTreino,simulado:viewSimulado,revisao:viewRevisao,plano:viewPlano,questoes:viewQuestoes,tutor:viewTutor};
  if(S.view==='tutor'&&!sample)S.view='mat';
- app.replaceChildren(header(),views[S.view](),S.view==='plano'||S.view==='mat'?backupPanel():'',h('footer',{},h('span',{id:'sync','data-state':syncState}),h('span',{},' · Questões autorais; vídeos e acervos são links externos.')));
+ app.replaceChildren(header(),iosInstallTip(),views[S.view](),S.view==='plano'||S.view==='mat'?backupPanel():'',h('footer',{},h('span',{id:'sync','data-state':syncState}),h('span',{},' · Questões autorais; vídeos e acervos são links externos.')));
  setSync(syncState);
 }
 render();

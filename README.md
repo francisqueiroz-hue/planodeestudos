@@ -22,7 +22,7 @@ Sem chave de IA, o app funciona normalmente e apenas desativa tutor, leitura de 
 
 ## Instalar no computador e no celular do estudante (sem servidor)
 
-A pasta `standalone/app/` é um aplicativo instalável (PWA) com Matemática em foco, as 399 questões, treino rápido, simulado, revisão e plano. Ele funciona sem internet e sem conta, e guarda o progresso no aparelho. Para publicar, arraste `standalone/painel-de-estudos-app.zip` no [Netlify Drop](https://app.netlify.com/drop) (com conta gratuita) e envie o link. O passo a passo completo está em [`docs/INSTALAR.md`](docs/INSTALAR.md). Para gerar de novo depois de editar as questões, use `npm run build:standalone`.
+A pasta `standalone/app/` é um aplicativo instalável (PWA) com Matemática em foco, as 399 questões, treino rápido, simulado, revisão e plano. Ele funciona sem internet e sem conta, e guarda o progresso no aparelho. **Link pronto para o iPhone, Android e computador: <https://francisqueiroz-hue.github.io/planodeestudos/>** (GitHub Pages, pasta `docs/`). Para publicar em outro endereço, arraste `standalone/painel-de-estudos-app.zip` no [Netlify Drop](https://app.netlify.com/drop) (com conta gratuita) e envie o link. O passo a passo completo está em [`docs/INSTALAR.md`](docs/INSTALAR.md). Para gerar de novo depois de editar as questões, use `npm run build:standalone`.
 
 ## Uso pessoal
 
